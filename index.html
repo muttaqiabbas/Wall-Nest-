@@ -500,7 +500,63 @@ Explore Premium
 </div>
 
 </div>
+<!-- PREMIUM PAGE -->
 
+<div id="premiumPage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>👑 Premium</h1>
+</div>
+
+<div class="premium-box">
+
+<h2>👑 Wall Nest Premium</h2>
+
+<p>
+Unlock exclusive premium wallpapers,
+HD quality and an ad-free experience.
+</p>
+
+<div class="button">
+💎 Premium Membership
+</div>
+
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>🔒 Premium Wallpapers</h2>
+<span>Locked</span>
+</div>
+
+<div class="wallpapers">
+
+<div class="wallpaper w2">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">🔒</div>
+</div>
+
+<div class="wallpaper w3">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">🔒</div>
+</div>
+
+<div class="wallpaper c2">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">🔒</div>
+</div>
+
+<div class="wallpaper a2">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">🔒</div>
+</div>
+
+</div>
+</div>
+
+</div>
 
 <!-- BOTTOM NAV -->
 
@@ -749,12 +805,14 @@ card.style.display="none";
 
 function premiumMessage(){
 
-alert(
-"👑 Wall Nest Premium\n\nPremium membership is coming soon!"
-);
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.add("active");
+
+window.scrollTo(0,0);
 
 }
-
 
 /* EXPLORE */
 
