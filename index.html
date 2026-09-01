@@ -793,10 +793,40 @@ card.style.display="none";
 
 function showCategory(name){
 
-alert(
-name +
-" category coming soon! 🚀"
-);
+  const cards = document.querySelectorAll(".wallpaper");
+
+  cards.forEach((card,index)=>{
+
+    if(name === "Cars"){
+
+      card.style.display =
+      (index === 0 || index === 3)
+      ? "block"
+      : "none";
+
+    }
+
+    else if(name === "Anime"){
+
+      card.style.display =
+      (index === 1 || index === 2)
+      ? "block"
+      : "none";
+
+    }
+
+    else{
+
+      card.style.display = "block";
+
+    }
+
+  });
+
+  window.scrollTo({
+    top:500,
+    behavior:"smooth"
+  });
 
 }
 
