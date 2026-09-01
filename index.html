@@ -582,7 +582,7 @@ a4:"https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit
 
 let currentWallpaper="";
 let favorites=[];
-
+const premiumWallpapers = ["w2","w3","c2","c4","a2","a4"];
 
 /* CATEGORY */
 
@@ -624,14 +624,26 @@ function openPreview(index){
 
 const keys=["w1","w2","w3","w4"];
 
-currentWallpaper=keys[index];
+const key=keys[index];
 
-showPreview(currentWallpaper);
+if(premiumWallpapers.includes(key)){
+premiumMessage();
+return;
+}
+
+currentWallpaper=key;
+
+showPreview(key);
 
 }
 
 
 function openCategoryPreview(key){
+
+if(premiumWallpapers.includes(key)){
+premiumMessage();
+return;
+}
 
 currentWallpaper=key;
 
