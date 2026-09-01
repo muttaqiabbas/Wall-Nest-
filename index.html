@@ -1,491 +1,851 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Wall Nest</title>
+<title>Wall Nest</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
 
-    body {
-      background: #08080d;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    .app {
-      max-width: 500px;
-      margin: auto;
-      min-height: 100vh;
-      padding-bottom: 90px;
-    }
+body{
+  background:#08080d;
+  color:white;
+  font-family:Arial,sans-serif;
+}
 
-    /* HEADER */
+.app{
+  max-width:500px;
+  margin:auto;
+  min-height:100vh;
+  padding-bottom:90px;
+}
 
-    header {
-      padding: 24px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+/* HEADER */
 
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-    }
+header{
+  padding:24px 18px 15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    .logo span {
-      color: #9b4dff;
-    }
+.logo{
+  font-size:28px;
+  font-weight:800;
+}
 
-    .crown {
-      font-size: 25px;
-    }
+.logo span{
+  color:#9b4dff;
+}
 
-    /* SEARCH */
+.crown{
+  font-size:25px;
+}
 
-    .search {
-      margin: 0 18px 22px;
-      background: #18181f;
-      border: 1px solid #292933;
-      border-radius: 14px;
-      padding: 14px 16px;
-    }
+/* SEARCH */
 
-    .search input {
-      width: 90%;
-      border: none;
-      outline: none;
-      background: transparent;
-      color: white;
-      font-size: 15px;
-    }
+.search{
+  margin:0 18px 22px;
+  padding:14px 16px;
+  background:#18181f;
+  border:1px solid #292933;
+  border-radius:15px;
+}
 
-    /* HERO */
+.search input{
+  width:88%;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:white;
+  font-size:15px;
+}
 
-    .hero {
-      margin: 0 18px 28px;
-      height: 210px;
-      border-radius: 22px;
-      padding: 24px;
-      display: flex;
-      align-items: flex-end;
+/* HERO */
 
-      background:
-        radial-gradient(circle at 80% 20%, #7438ff, transparent 35%),
-        linear-gradient(135deg, #171126, #30145d, #09090e);
-    }
+.hero{
+  margin:0 18px 28px;
+  height:210px;
+  border-radius:22px;
+  padding:24px;
+  display:flex;
+  align-items:flex-end;
 
-    .hero h1 {
-      font-size: 27px;
-      margin-bottom: 8px;
-    }
+  background:
+  radial-gradient(circle at 80% 20%,#7438ff,transparent 35%),
+  linear-gradient(135deg,#171126,#30145d,#09090e);
+}
 
-    .hero p {
-      color: #c8b2df;
-      margin-bottom: 15px;
-    }
+.hero h1{
+  font-size:27px;
+  margin-bottom:8px;
+}
 
-    .button {
-      display: inline-block;
-      padding: 11px 17px;
-      background: #8d3cff;
-      border-radius: 10px;
-      font-weight: bold;
-    }
+.hero p{
+  color:#c8b2df;
+  margin-bottom:15px;
+}
 
-    /* SECTION */
+.button{
+  display:inline-block;
+  background:#8d3cff;
+  padding:11px 17px;
+  border-radius:10px;
+  font-weight:bold;
+}
 
-    .section {
-      margin: 0 18px 28px;
-    }
+/* SECTIONS */
 
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-    }
+.section{
+  margin:0 18px 28px;
+}
 
-    .section-title h2 {
-      font-size: 19px;
-    }
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+}
 
-    .section-title span {
-      color: #999;
-      font-size: 13px;
-    }
+.section-title h2{
+  font-size:19px;
+}
 
-    /* CATEGORIES */
+.section-title span{
+  color:#999;
+  font-size:13px;
+}
 
-    .categories {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+/* CATEGORIES */
 
-    .category {
-      height: 120px;
-      border-radius: 16px;
-      padding: 15px;
-      display: flex;
-      align-items: flex-end;
-      font-size: 17px;
-      font-weight: bold;
-      overflow: hidden;
-    }
+.categories{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
 
-    .cars {
-      background:
-        radial-gradient(circle at 70% 30%, #ff5555, transparent 30%),
-        linear-gradient(135deg, #401010, #111);
-    }
+.category{
+  height:120px;
+  border-radius:16px;
+  padding:15px;
+  display:flex;
+  align-items:flex-end;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .anime {
-      background:
-        radial-gradient(circle at 30% 20%, #5f4cff, transparent 35%),
-        linear-gradient(135deg, #17134a, #09090d);
-    }
+.cars{
+  background:
+  radial-gradient(circle at 70% 30%,#ff5555,transparent 30%),
+  linear-gradient(135deg,#401010,#111);
+}
 
-    /* WALLPAPERS */
+.anime{
+  background:
+  radial-gradient(circle at 30% 20%,#5f4cff,transparent 35%),
+  linear-gradient(135deg,#17134a,#09090d);
+}
 
-    .wallpapers {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+/* WALLPAPERS */
 
-    .wallpaper {
-      height: 230px;
-      border-radius: 16px;
-      position: relative;
-      overflow: hidden;
-    }
+.wallpapers{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
 
-    .wallpaper:nth-child(1) {
-      background:
-        radial-gradient(circle at 30% 20%, #ff6b35, transparent 30%),
-        linear-gradient(150deg, #32130b, #09090d);
-    }
+.wallpaper{
+  height:250px;
+  border-radius:16px;
+  position:relative;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
+  cursor:pointer;
+}
 
-    .wallpaper:nth-child(2) {
-      background:
-        radial-gradient(circle at 70% 20%, #9b4dff, transparent 35%),
-        linear-gradient(150deg, #241044, #09090d);
-    }
+.wallpaper:hover{
+  transform:scale(1.01);
+}
 
-    .wallpaper:nth-child(3) {
-      background:
-        radial-gradient(circle at 50% 30%, #00bcd4, transparent 35%),
-        linear-gradient(150deg, #062b35, #09090d);
-    }
+.wallpaper:nth-child(1){
+  background-image:
+  url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=85");
+}
 
-    .wallpaper:nth-child(4) {
-      background:
-        radial-gradient(circle at 30% 20%, #ffd54f, transparent 30%),
-        linear-gradient(150deg, #3a2d06, #09090d);
-    }
+.wallpaper:nth-child(2){
+  background-image:
+  url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=85");
+}
 
-    .wallpaper-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 65px;
-    }
+.wallpaper:nth-child(3){
+  background-image:
+  url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=85");
+}
 
-    .badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      padding: 6px 9px;
-      border-radius: 7px;
-      font-size: 10px;
-      font-weight: bold;
-    }
+.wallpaper:nth-child(4){
+  background-image:
+  url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=85");
+}
 
-    .free {
-      background: #7438ff;
-    }
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  padding:6px 9px;
+  border-radius:7px;
+  font-size:10px;
+  font-weight:bold;
+}
 
-    .premium {
-      background: #ffc529;
-      color: #111;
-    }
+.free{
+  background:#7438ff;
+}
 
-    .heart {
-      position: absolute;
-      top: 9px;
-      right: 9px;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: #0009;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 20px;
-    }
+.premium{
+  background:#ffc529;
+  color:#111;
+}
 
-    /* PREMIUM */
+.heart{
+  position:absolute;
+  top:9px;
+  right:9px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#0009;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:21px;
+  z-index:2;
+}
 
-    .premium-box {
-      margin: 0 18px;
-      padding: 20px;
-      border-radius: 18px;
-      border: 1px solid #6330a8;
-      background: linear-gradient(135deg, #24113d, #111119);
-    }
+/* PREMIUM */
 
-    .premium-box h2 {
-      margin-bottom: 8px;
-    }
+.premium-box{
+  margin:0 18px;
+  padding:20px;
+  border-radius:18px;
+  border:1px solid #6330a8;
+  background:linear-gradient(135deg,#24113d,#111119);
+}
 
-    .premium-box p {
-      color: #aaa;
-      line-height: 1.5;
-      font-size: 14px;
-    }
+.premium-box h2{
+  margin-bottom:8px;
+}
 
-    .premium-box .button {
-      margin-top: 15px;
-    }
+.premium-box p{
+  color:#aaa;
+  line-height:1.5;
+  font-size:14px;
+}
 
-    /* BOTTOM NAVIGATION */
+.premium-box .button{
+  margin-top:15px;
+}
 
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(500px, 100%);
-      height: 70px;
+/* BOTTOM NAV */
 
-      background: #15151b;
-      border-top: 1px solid #292933;
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(500px,100%);
+  height:70px;
+  background:#15151b;
+  border-top:1px solid #292933;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:10;
+}
 
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
+.nav-item{
+  text-align:center;
+  color:#888;
+  font-size:11px;
+  cursor:pointer;
+}
 
-    .nav-item {
-      text-align: center;
-      color: #888;
-      font-size: 11px;
-    }
+.nav-item.active{
+  color:#9b4dff;
+}
 
-    .nav-item.active {
-      color: #9b4dff;
-    }
+.nav-icon{
+  font-size:21px;
+  margin-bottom:4px;
+}
 
-    .nav-icon {
-      font-size: 21px;
-      margin-bottom: 4px;
-    }
-  </style>
+/* PREVIEW */
+
+.preview{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000;
+  z-index:100;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.preview.show{
+  display:flex;
+}
+
+.preview-image{
+  width:100%;
+  max-width:500px;
+  height:75vh;
+  background-size:cover;
+  background-position:center;
+  border-radius:18px;
+}
+
+.preview-controls{
+  display:flex;
+  gap:12px;
+  margin-top:15px;
+}
+
+.control{
+  padding:12px 18px;
+  border:0;
+  border-radius:12px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.download{
+  background:#8d3cff;
+  color:white;
+}
+
+.close{
+  background:#292929;
+  color:white;
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <header>
-      <div class="logo">
-        Wall <span>Nest</span>
-      </div>
+<header>
 
-      <div class="crown">
-        👑
-      </div>
-    </header>
+<div class="logo">
+Wall <span>Nest</span>
+</div>
 
+<div class="crown">
+👑
+</div>
 
-    <div class="search">
-      🔍
-      <input
-        type="text"
-        placeholder="Search wallpapers..."
-      >
-    </div>
+</header>
 
 
-    <div class="hero">
+<div class="search">
 
-      <div>
-        <h1>Beautiful Wallpapers</h1>
+🔍
 
-        <p>
-          Discover your perfect wallpaper
-        </p>
+<input
+id="searchInput"
+type="text"
+placeholder="Search wallpapers..."
+>
 
-        <div class="button">
-          Explore Now
-        </div>
-      </div>
+</div>
 
-    </div>
 
+<div class="hero">
 
-    <div class="section">
+<div>
 
-      <div class="section-title">
-        <h2>Categories</h2>
-        <span>See All ›</span>
-      </div>
+<h1>Beautiful Wallpapers</h1>
 
+<p>
+Discover your perfect wallpaper
+</p>
 
-      <div class="categories">
+<div class="button">
+Explore Now
+</div>
 
-        <div class="category cars">
-          🚗 Cars
-        </div>
+</div>
 
-        <div class="category anime">
-          🎌 Anime
-        </div>
+</div>
 
-      </div>
 
-    </div>
+<div class="section">
 
+<div class="section-title">
 
-    <div class="section">
+<h2>Categories</h2>
 
-      <div class="section-title">
-        <h2>Featured</h2>
-        <span>See All ›</span>
-      </div>
+<span>See All ›</span>
 
+</div>
 
-      <div class="wallpapers">
 
-        <div class="wallpaper">
+<div class="categories">
 
-          <div class="badge free">
-            FREE
-          </div>
+<div
+class="category cars"
+onclick="showCategory('Cars')"
+>
+🚗 Cars
+</div>
 
-          <div class="heart">
-            ♡
-          </div>
 
-          <div class="wallpaper-icon">
-            🏎️
-          </div>
+<div
+class="category anime"
+onclick="showCategory('Anime')"
+>
+🎌 Anime
+</div>
 
-        </div>
+</div>
 
+</div>
 
-        <div class="wallpaper">
 
-          <div class="badge premium">
-            PREMIUM
-          </div>
+<div class="section">
 
-          <div class="heart">
-            ♡
-          </div>
+<div class="section-title">
 
-          <div class="wallpaper-icon">
-            🌌
-          </div>
+<h2>Featured Wallpapers</h2>
 
-        </div>
+<span>See All ›</span>
 
+</div>
 
-        <div class="wallpaper">
 
-          <div class="badge premium">
-            PREMIUM
-          </div>
+<div
+class="wallpapers"
+id="wallpapers"
+>
 
-          <div class="heart">
-            ♡
-          </div>
 
-          <div class="wallpaper-icon">
-            🌊
-          </div>
+<div
+class="wallpaper"
+data-name="Sports Car"
+onclick="openPreview(0)"
+>
 
-        </div>
+<div class="badge free">
+FREE
+</div>
 
+<div
+class="heart"
+onclick="favorite(event,0)"
+id="heart0"
+>
+♡
+</div>
 
-        <div class="wallpaper">
+</div>
 
-          <div class="badge free">
-            FREE
-          </div>
 
-          <div class="heart">
-            ♡
-          </div>
+<div
+class="wallpaper"
+data-name="Night Sky"
+onclick="openPreview(1)"
+>
 
-          <div class="wallpaper-icon">
-            🌄
-          </div>
+<div class="badge premium">
+PREMIUM
+</div>
 
-        </div>
+<div
+class="heart"
+onclick="favorite(event,1)"
+id="heart1"
+>
+♡
+</div>
 
-      </div>
+</div>
 
-    </div>
 
+<div
+class="wallpaper"
+data-name="Nature"
+onclick="openPreview(2)"
+>
 
-    <div class="premium-box">
+<div class="badge premium">
+PREMIUM
+</div>
 
-      <h2>
-        👑 Wall Nest Premium
-      </h2>
+<div
+class="heart"
+onclick="favorite(event,2)"
+id="heart2"
+>
+♡
+</div>
 
-      <p>
-        Unlock exclusive wallpapers,
-        HD quality and an ad-free experience.
-      </p>
+</div>
 
-      <div class="button">
-        Explore Premium
-      </div>
 
-    </div>
+<div
+class="wallpaper"
+data-name="Luxury Car"
+onclick="openPreview(3)"
+>
 
-  </div>
+<div class="badge free">
+FREE
+</div>
 
+<div
+class="heart"
+onclick="favorite(event,3)"
+id="heart3"
+>
+♡
+</div>
 
-  <div class="bottom-nav">
+</div>
 
-    <div class="nav-item active">
-      <div class="nav-icon">⌂</div>
-      Home
-    </div>
 
-    <div class="nav-item">
-      <div class="nav-icon">▦</div>
-      Categories
-    </div>
+</div>
 
-    <div class="nav-item">
-      <div class="nav-icon">♡</div>
-      Favorites
-    </div>
+</div>
 
-    <div class="nav-item">
-      <div class="nav-icon">♛</div>
-      Premium
-    </div>
 
-    <div class="nav-item">
-      <div class="nav-icon">⚙</div>
-      Settings
-    </div>
+<div class="premium-box">
 
-  </div>
+<h2>
+👑 Wall Nest Premium
+</h2>
+
+<p>
+Unlock exclusive wallpapers,
+HD quality and an ad-free experience.
+</p>
+
+<div
+class="button"
+onclick="premiumMessage()"
+>
+Explore Premium
+</div>
+
+</div>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
+
+<div class="bottom-nav">
+
+<div class="nav-item active">
+
+<div class="nav-icon">
+⌂
+</div>
+
+Home
+
+</div>
+
+
+<div
+class="nav-item"
+onclick="showCategory('Categories')"
+>
+
+<div class="nav-icon">
+▦
+</div>
+
+Categories
+
+</div>
+
+
+<div
+class="nav-item"
+onclick="showFavorites()"
+>
+
+<div class="nav-icon">
+♡
+</div>
+
+Favorites
+
+</div>
+
+
+<div
+class="nav-item"
+onclick="premiumMessage()"
+>
+
+<div class="nav-icon">
+♛
+</div>
+
+Premium
+
+</div>
+
+
+<div
+class="nav-item"
+onclick="settingsMessage()"
+>
+
+<div class="nav-icon">
+⚙
+</div>
+
+Settings
+
+</div>
+
+</div>
+
+
+<!-- PREVIEW -->
+
+<div
+class="preview"
+id="preview"
+>
+
+<div
+class="preview-image"
+id="previewImage"
+>
+</div>
+
+
+<div class="preview-controls">
+
+<button
+class="control download"
+onclick="downloadWallpaper()"
+>
+⬇️ Download
+</button>
+
+
+<button
+class="control close"
+onclick="closePreview()"
+>
+✕ Close
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+const wallpapers = [
+
+"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=90",
+
+"https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=90",
+
+"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=90",
+
+"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=90"
+
+];
+
+let currentWallpaper = 0;
+
+let favorites = [];
+
+
+/* PREVIEW */
+
+function openPreview(index){
+
+currentWallpaper = index;
+
+const preview =
+document.getElementById("preview");
+
+const image =
+document.getElementById("previewImage");
+
+image.style.backgroundImage =
+"url('" + wallpapers[index] + "')";
+
+preview.classList.add("show");
+
+}
+
+
+/* CLOSE */
+
+function closePreview(){
+
+document
+.getElementById("preview")
+.classList.remove("show");
+
+}
+
+
+/* DOWNLOAD */
+
+function downloadWallpaper(){
+
+const link =
+document.createElement("a");
+
+link.href =
+wallpapers[currentWallpaper];
+
+link.target="_blank";
+
+link.download =
+"wallnest-wallpaper.jpg";
+
+link.click();
+
+}
+
+
+/* FAVORITE */
+
+function favorite(event,index){
+
+event.stopPropagation();
+
+const heart =
+document.getElementById("heart"+index);
+
+if(favorites.includes(index)){
+
+favorites =
+favorites.filter(x => x !== index);
+
+heart.innerHTML="♡";
+
+}else{
+
+favorites.push(index);
+
+heart.innerHTML="♥";
+
+}
+
+}
+
+
+/* SEARCH */
+
+document
+.getElementById("searchInput")
+.addEventListener("input",function(){
+
+const search =
+this.value.toLowerCase();
+
+const cards =
+document.querySelectorAll(".wallpaper");
+
+cards.forEach(card => {
+
+const name =
+card.dataset.name.toLowerCase();
+
+if(name.includes(search)){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+});
+
+
+/* CATEGORY */
+
+function showCategory(name){
+
+alert(
+name +
+" category coming soon! 🚀"
+);
+
+}
+
+
+/* FAVORITES */
+
+function showFavorites(){
+
+if(favorites.length===0){
+
+alert(
+"No favorites yet ❤️"
+);
+
+}else{
+
+alert(
+"You have " +
+favorites.length +
+" favorite wallpaper(s) ❤️"
+);
+
+}
+
+}
+
+
+/* PREMIUM */
+
+function premiumMessage(){
+
+alert(
+"👑 Wall Nest Premium\n\nPremium wallpapers and features are coming soon!"
+);
+
+}
+
+
+/* SETTINGS */
+
+function settingsMessage(){
+
+alert(
+"⚙️ Settings\n\nSettings will be added soon."
+);
+
+}
+
+</script>
 
 </body>
 </html>
