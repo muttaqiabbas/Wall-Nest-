@@ -2,341 +2,319 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Wall Nest</title>
 
 <style>
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  background:#08080d;
-  color:white;
-  font-family:Arial,sans-serif;
+background:#08080d;
+color:#fff;
+font-family:Arial,sans-serif;
 }
 
 .app{
-  max-width:500px;
-  margin:auto;
-  min-height:100vh;
-  padding-bottom:90px;
+max-width:500px;
+margin:auto;
+min-height:100vh;
+padding-bottom:90px;
 }
 
-/* HEADER */
-
 header{
-  padding:24px 18px 15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+padding:24px 18px 15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .logo{
-  font-size:28px;
-  font-weight:800;
+font-size:29px;
+font-weight:800;
 }
 
-.logo span{
-  color:#9b4dff;
-}
+.logo span{color:#9b4dff}
 
-.crown{
-  font-size:25px;
-}
-
-/* SEARCH */
+.crown{font-size:25px}
 
 .search{
-  margin:0 18px 22px;
-  padding:14px 16px;
-  background:#18181f;
-  border:1px solid #292933;
-  border-radius:15px;
+margin:0 18px 22px;
+padding:14px 16px;
+background:#18181f;
+border:1px solid #292933;
+border-radius:15px;
 }
 
 .search input{
-  width:88%;
-  border:0;
-  outline:0;
-  background:transparent;
-  color:white;
-  font-size:15px;
+width:88%;
+border:0;
+outline:0;
+background:transparent;
+color:white;
+font-size:15px;
 }
 
-/* HERO */
-
 .hero{
-  margin:0 18px 28px;
-  height:210px;
-  border-radius:22px;
-  padding:24px;
-  display:flex;
-  align-items:flex-end;
-
-  background:
-  radial-gradient(circle at 80% 20%,#7438ff,transparent 35%),
-  linear-gradient(135deg,#171126,#30145d,#09090e);
+margin:0 18px 28px;
+height:210px;
+border-radius:22px;
+padding:24px;
+display:flex;
+align-items:flex-end;
+background:
+radial-gradient(circle at 80% 20%,#7438ff,transparent 35%),
+linear-gradient(135deg,#171126,#30145d,#09090e);
 }
 
 .hero h1{
-  font-size:27px;
-  margin-bottom:8px;
+font-size:27px;
+margin-bottom:8px;
 }
 
 .hero p{
-  color:#c8b2df;
-  margin-bottom:15px;
+color:#c8b2df;
+margin-bottom:15px;
 }
 
 .button{
-  display:inline-block;
-  background:#8d3cff;
-  padding:11px 17px;
-  border-radius:10px;
-  font-weight:bold;
+display:inline-block;
+background:#8d3cff;
+padding:11px 17px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
 }
 
-/* SECTIONS */
-
 .section{
-  margin:0 18px 28px;
+margin:0 18px 28px;
 }
 
 .section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:14px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px;
 }
 
-.section-title h2{
-  font-size:19px;
-}
+.section-title h2{font-size:20px}
 
 .section-title span{
-  color:#999;
-  font-size:13px;
+color:#999;
+font-size:13px;
 }
 
-/* CATEGORIES */
-
 .categories{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
 }
 
 .category{
-  height:120px;
-  border-radius:16px;
-  padding:15px;
-  display:flex;
-  align-items:flex-end;
-  font-size:17px;
-  font-weight:bold;
-  cursor:pointer;
+height:120px;
+border-radius:16px;
+padding:15px;
+display:flex;
+align-items:flex-end;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
 }
 
 .cars{
-  background:
-  radial-gradient(circle at 70% 30%,#ff5555,transparent 30%),
-  linear-gradient(135deg,#401010,#111);
+background:
+radial-gradient(circle at 70% 30%,#ff5555,transparent 30%),
+linear-gradient(135deg,#401010,#111);
 }
 
 .anime{
-  background:
-  radial-gradient(circle at 30% 20%,#5f4cff,transparent 35%),
-  linear-gradient(135deg,#17134a,#09090d);
+background:
+radial-gradient(circle at 30% 20%,#5f4cff,transparent 35%),
+linear-gradient(135deg,#17134a,#09090d);
 }
 
-/* WALLPAPERS */
-
 .wallpapers{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
 }
 
 .wallpaper{
-  height:250px;
-  border-radius:16px;
-  position:relative;
-  overflow:hidden;
-  background-size:cover;
-  background-position:center;
-  cursor:pointer;
+height:250px;
+border-radius:16px;
+position:relative;
+overflow:hidden;
+background-size:cover;
+background-position:center;
+cursor:pointer;
 }
 
-.wallpaper:hover{
-  transform:scale(1.01);
-}
+.w1{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=90")}
+.w2{background-image:url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=90")}
+.w3{background-image:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=90")}
+.w4{background-image:url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=90")}
 
-.wallpaper:nth-child(1){
-  background-image:
-  url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=85");
-}
+.c1{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=90")}
+.c2{background-image:url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=90")}
+.c3{background-image:url("https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=700&q=90")}
+.c4{background-image:url("https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=700&q=90")}
 
-.wallpaper:nth-child(2){
-  background-image:
-  url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=85");
-}
-
-.wallpaper:nth-child(3){
-  background-image:
-  url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=85");
-}
-
-.wallpaper:nth-child(4){
-  background-image:
-  url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=85");
-}
+.a1{background-image:url("https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=700&q=90")}
+.a2{background-image:url("https://images.unsplash.com/photo-1613376023733-0a73315d9b06?auto=format&fit=crop&w=700&q=90")}
+.a3{background-image:url("https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=700&q=90")}
+.a4{background-image:url("https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=700&q=90")}
 
 .badge{
-  position:absolute;
-  top:10px;
-  left:10px;
-  padding:6px 9px;
-  border-radius:7px;
-  font-size:10px;
-  font-weight:bold;
+position:absolute;
+top:10px;
+left:10px;
+padding:6px 9px;
+border-radius:7px;
+font-size:10px;
+font-weight:bold;
 }
 
 .free{
-  background:#7438ff;
+background:#7438ff;
 }
 
 .premium{
-  background:#ffc529;
-  color:#111;
+background:#ffc529;
+color:#111;
 }
 
 .heart{
-  position:absolute;
-  top:9px;
-  right:9px;
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  background:#0009;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:21px;
-  z-index:2;
+position:absolute;
+top:9px;
+right:9px;
+width:36px;
+height:36px;
+border-radius:50%;
+background:#000b;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:21px;
+z-index:2;
+cursor:pointer;
 }
-
-/* PREMIUM */
 
 .premium-box{
-  margin:0 18px;
-  padding:20px;
-  border-radius:18px;
-  border:1px solid #6330a8;
-  background:linear-gradient(135deg,#24113d,#111119);
+margin:0 18px;
+padding:20px;
+border-radius:18px;
+border:1px solid #6330a8;
+background:linear-gradient(135deg,#24113d,#111119);
 }
 
-.premium-box h2{
-  margin-bottom:8px;
-}
+.premium-box h2{margin-bottom:8px}
 
 .premium-box p{
-  color:#aaa;
-  line-height:1.5;
-  font-size:14px;
+color:#aaa;
+line-height:1.5;
+font-size:14px;
 }
 
-.premium-box .button{
-  margin-top:15px;
-}
-
-/* BOTTOM NAV */
+.premium-box .button{margin-top:15px}
 
 .bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(500px,100%);
-  height:70px;
-  background:#15151b;
-  border-top:1px solid #292933;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  z-index:10;
+position:fixed;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:min(500px,100%);
+height:70px;
+background:#15151b;
+border-top:1px solid #292933;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:20;
 }
 
 .nav-item{
-  text-align:center;
-  color:#888;
-  font-size:11px;
-  cursor:pointer;
+text-align:center;
+color:#888;
+font-size:11px;
+cursor:pointer;
 }
 
-.nav-item.active{
-  color:#9b4dff;
-}
+.nav-item.active{color:#9b4dff}
 
 .nav-icon{
-  font-size:21px;
-  margin-bottom:4px;
+font-size:21px;
+margin-bottom:4px;
 }
 
-/* PREVIEW */
+.page{
+display:none;
+}
+
+.page.active{
+display:block;
+}
+
+.page-header{
+padding:22px 18px;
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.back{
+font-size:25px;
+cursor:pointer;
+}
+
+.page-header h1{
+font-size:25px;
+}
 
 .preview{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#000;
-  z-index:100;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
+display:none;
+position:fixed;
+inset:0;
+background:#000;
+z-index:100;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+padding:15px;
 }
 
-.preview.show{
-  display:flex;
-}
+.preview.show{display:flex}
 
 .preview-image{
-  width:100%;
-  max-width:500px;
-  height:75vh;
-  background-size:cover;
-  background-position:center;
-  border-radius:18px;
+width:100%;
+max-width:500px;
+height:75vh;
+background-size:cover;
+background-position:center;
+border-radius:18px;
 }
 
 .preview-controls{
-  display:flex;
-  gap:12px;
-  margin-top:15px;
+display:flex;
+gap:10px;
+margin-top:15px;
 }
 
 .control{
-  padding:12px 18px;
-  border:0;
-  border-radius:12px;
-  font-weight:bold;
-  cursor:pointer;
+border:0;
+border-radius:12px;
+padding:12px 18px;
+font-weight:bold;
+cursor:pointer;
 }
 
 .download{
-  background:#8d3cff;
-  color:white;
+background:#8d3cff;
+color:#fff;
 }
 
 .close{
-  background:#292929;
-  color:white;
+background:#292929;
+color:#fff;
 }
-
 </style>
 </head>
 
@@ -344,208 +322,181 @@ header{
 
 <div class="app">
 
+<!-- HOME -->
+
+<div id="homePage" class="page active">
+
 <header>
-
-<div class="logo">
-Wall <span>Nest</span>
-</div>
-
-<div class="crown">
-👑
-</div>
-
+<div class="logo">Wall <span>Nest</span></div>
+<div class="crown">👑</div>
 </header>
 
-
 <div class="search">
-
 🔍
-
-<input
-id="searchInput"
-type="text"
-placeholder="Search wallpapers..."
->
-
+<input id="searchInput" placeholder="Search wallpapers...">
 </div>
-
 
 <div class="hero">
-
 <div>
-
 <h1>Beautiful Wallpapers</h1>
-
-<p>
-Discover your perfect wallpaper
-</p>
-
-<div class="button">
-Explore Now
+<p>Discover your perfect wallpaper</p>
+<div class="button" onclick="scrollToFeatured()">Explore Now</div>
 </div>
-
 </div>
-
-</div>
-
 
 <div class="section">
 
 <div class="section-title">
-
 <h2>Categories</h2>
-
 <span>See All ›</span>
-
 </div>
-
 
 <div class="categories">
 
-<div
-class="category cars"
-onclick="showCategory('Cars')"
->
+<div class="category cars" onclick="openCategory('cars')">
 🚗 Cars
 </div>
 
-
-<div
-class="category anime"
-onclick="showCategory('Anime')"
->
+<div class="category anime" onclick="openCategory('anime')">
 🎌 Anime
 </div>
 
 </div>
+</div>
+
+<div class="section" id="featured">
+
+<div class="section-title">
+<h2>Featured Wallpapers</h2>
+<span>See All ›</span>
+</div>
+
+<div class="wallpapers">
+
+<div class="wallpaper w1" onclick="openPreview(0)">
+<div class="badge free">FREE</div>
+<div class="heart" onclick="favorite(event,0)" id="heart0">♡</div>
+</div>
+
+<div class="wallpaper w2" onclick="openPreview(1)">
+<div class="badge premium">PREMIUM</div>
+<div class="heart" onclick="favorite(event,1)" id="heart1">♡</div>
+</div>
+
+<div class="wallpaper w3" onclick="openPreview(2)">
+<div class="badge premium">PREMIUM</div>
+<div class="heart" onclick="favorite(event,2)" id="heart2">♡</div>
+</div>
+
+<div class="wallpaper w4" onclick="openPreview(3)">
+<div class="badge free">FREE</div>
+<div class="heart" onclick="favorite(event,3)" id="heart3">♡</div>
+</div>
+
+</div>
+</div>
+
+<div class="premium-box">
+
+<h2>👑 Wall Nest Premium</h2>
+
+<p>
+Unlock exclusive wallpapers, HD quality
+and an ad-free experience.
+</p>
+
+<div class="button" onclick="premiumMessage()">
+Explore Premium
+</div>
 
 </div>
 
+</div>
+
+
+<!-- CARS PAGE -->
+
+<div id="carsPage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>🚗 Cars</h1>
+</div>
 
 <div class="section">
 
 <div class="section-title">
-
-<h2>Featured Wallpapers</h2>
-
-<span>See All ›</span>
-
+<h2>Car Wallpapers</h2>
+<span>4 Wallpapers</span>
 </div>
 
+<div class="wallpapers">
 
-<div
-class="wallpapers"
-id="wallpapers"
->
-
-
-<div
-class="wallpaper"
-data-name="Sports Car"
-onclick="openPreview(0)"
->
-
-<div class="badge free">
-FREE
+<div class="wallpaper c1" onclick="openCategoryPreview('c1')">
+<div class="badge free">FREE</div>
+<div class="heart">♡</div>
 </div>
 
-<div
-class="heart"
-onclick="favorite(event,0)"
-id="heart0"
->
-♡
+<div class="wallpaper c2" onclick="openCategoryPreview('c2')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">♡</div>
+</div>
+
+<div class="wallpaper c3" onclick="openCategoryPreview('c3')">
+<div class="badge free">FREE</div>
+<div class="heart">♡</div>
+</div>
+
+<div class="wallpaper c4" onclick="openCategoryPreview('c4')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">♡</div>
 </div>
 
 </div>
-
-
-<div
-class="wallpaper"
-data-name="Night Sky"
-onclick="openPreview(1)"
->
-
-<div class="badge premium">
-PREMIUM
 </div>
-
-<div
-class="heart"
-onclick="favorite(event,1)"
-id="heart1"
->
-♡
-</div>
-
 </div>
 
 
-<div
-class="wallpaper"
-data-name="Nature"
-onclick="openPreview(2)"
->
+<!-- ANIME PAGE -->
 
-<div class="badge premium">
-PREMIUM
+<div id="animePage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>🎌 Anime</h1>
 </div>
 
-<div
-class="heart"
-onclick="favorite(event,2)"
-id="heart2"
->
-♡
+<div class="section">
+
+<div class="section-title">
+<h2>Anime Wallpapers</h2>
+<span>4 Wallpapers</span>
 </div>
 
+<div class="wallpapers">
+
+<div class="wallpaper a1" onclick="openCategoryPreview('a1')">
+<div class="badge free">FREE</div>
+<div class="heart">♡</div>
 </div>
 
-
-<div
-class="wallpaper"
-data-name="Luxury Car"
-onclick="openPreview(3)"
->
-
-<div class="badge free">
-FREE
+<div class="wallpaper a2" onclick="openCategoryPreview('a2')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">♡</div>
 </div>
 
-<div
-class="heart"
-onclick="favorite(event,3)"
-id="heart3"
->
-♡
+<div class="wallpaper a3" onclick="openCategoryPreview('a3')">
+<div class="badge free">FREE</div>
+<div class="heart">♡</div>
 </div>
 
-</div>
-
-
+<div class="wallpaper a4" onclick="openCategoryPreview('a4')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">♡</div>
 </div>
 
 </div>
-
-
-<div class="premium-box">
-
-<h2>
-👑 Wall Nest Premium
-</h2>
-
-<p>
-Unlock exclusive wallpapers,
-HD quality and an ad-free experience.
-</p>
-
-<div
-class="button"
-onclick="premiumMessage()"
->
-Explore Premium
 </div>
-
 </div>
 
 </div>
@@ -555,70 +506,24 @@ Explore Premium
 
 <div class="bottom-nav">
 
-<div class="nav-item active">
-
-<div class="nav-icon">
-⌂
-</div>
-
+<div class="nav-item active" onclick="goHome()">
+<div class="nav-icon">⌂</div>
 Home
-
 </div>
 
-
-<div
-class="nav-item"
-onclick="showCategory('Categories')"
->
-
-<div class="nav-icon">
-▦
+<div class="nav-item" onclick="openCategory('cars')">
+<div class="nav-icon">🚗</div>
+Cars
 </div>
 
-Categories
-
+<div class="nav-item" onclick="openCategory('anime')">
+<div class="nav-icon">🎌</div>
+Anime
 </div>
 
-
-<div
-class="nav-item"
-onclick="showFavorites()"
->
-
-<div class="nav-icon">
-♡
-</div>
-
-Favorites
-
-</div>
-
-
-<div
-class="nav-item"
-onclick="premiumMessage()"
->
-
-<div class="nav-icon">
-♛
-</div>
-
+<div class="nav-item" onclick="premiumMessage()">
+<div class="nav-icon">♛</div>
 Premium
-
-</div>
-
-
-<div
-class="nav-item"
-onclick="settingsMessage()"
->
-
-<div class="nav-icon">
-⚙
-</div>
-
-Settings
-
 </div>
 
 </div>
@@ -626,32 +531,17 @@ Settings
 
 <!-- PREVIEW -->
 
-<div
-class="preview"
-id="preview"
->
+<div id="preview" class="preview">
 
-<div
-class="preview-image"
-id="previewImage"
->
-</div>
-
+<div id="previewImage" class="preview-image"></div>
 
 <div class="preview-controls">
 
-<button
-class="control download"
-onclick="downloadWallpaper()"
->
+<button class="control download" onclick="downloadWallpaper()">
 ⬇️ Download
 </button>
 
-
-<button
-class="control close"
-onclick="closePreview()"
->
+<button class="control close" onclick="closePreview()">
 ✕ Close
 </button>
 
@@ -662,37 +552,102 @@ onclick="closePreview()"
 
 <script>
 
-const wallpapers = [
+const wallpapers = {
 
-"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=90",
+w1:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=90",
 
-"https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=90",
+w2:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=90",
 
-"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=90",
+w3:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=90",
 
-"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=90"
+w4:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=90",
 
-];
+c1:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=90",
 
-let currentWallpaper = 0;
+c2:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=90",
 
-let favorites = [];
+c3:"https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=90",
+
+c4:"https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1200&q=90",
+
+a1:"https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1200&q=90",
+
+a2:"https://images.unsplash.com/photo-1613376023733-0a73315d9b06?auto=format&fit=crop&w=1200&q=90",
+
+a3:"https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=90",
+
+a4:"https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=1200&q=90"
+
+};
+
+let currentWallpaper="";
+let favorites=[];
+
+
+/* CATEGORY */
+
+function openCategory(category){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+
+if(category==="cars"){
+document.getElementById("carsPage").classList.add("active");
+}
+
+if(category==="anime"){
+document.getElementById("animePage").classList.add("active");
+}
+
+window.scrollTo(0,0);
+
+}
+
+
+/* HOME */
+
+function goHome(){
+
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("homePage").classList.add("active");
+
+window.scrollTo(0,0);
+
+}
 
 
 /* PREVIEW */
 
 function openPreview(index){
 
-currentWallpaper = index;
+const keys=["w1","w2","w3","w4"];
 
-const preview =
-document.getElementById("preview");
+currentWallpaper=keys[index];
 
-const image =
-document.getElementById("previewImage");
+showPreview(currentWallpaper);
 
-image.style.backgroundImage =
-"url('" + wallpapers[index] + "')";
+}
+
+
+function openCategoryPreview(key){
+
+currentWallpaper=key;
+
+showPreview(key);
+
+}
+
+
+function showPreview(key){
+
+const preview=document.getElementById("preview");
+
+const image=document.getElementById("previewImage");
+
+image.style.backgroundImage=
+"url('"+wallpapers[key]+"')";
 
 preview.classList.add("show");
 
@@ -703,9 +658,7 @@ preview.classList.add("show");
 
 function closePreview(){
 
-document
-.getElementById("preview")
-.classList.remove("show");
+document.getElementById("preview").classList.remove("show");
 
 }
 
@@ -714,16 +667,13 @@ document
 
 function downloadWallpaper(){
 
-const link =
-document.createElement("a");
+const link=document.createElement("a");
 
-link.href =
-wallpapers[currentWallpaper];
+link.href=wallpapers[currentWallpaper];
 
 link.target="_blank";
 
-link.download =
-"wallnest-wallpaper.jpg";
+link.download="wallnest-wallpaper.jpg";
 
 link.click();
 
@@ -736,21 +686,17 @@ function favorite(event,index){
 
 event.stopPropagation();
 
-const heart =
-document.getElementById("heart"+index);
-
 if(favorites.includes(index)){
 
-favorites =
-favorites.filter(x => x !== index);
+favorites=favorites.filter(x=>x!==index);
 
-heart.innerHTML="♡";
+document.getElementById("heart"+index).innerHTML="♡";
 
 }else{
 
 favorites.push(index);
 
-heart.innerHTML="♥";
+document.getElementById("heart"+index).innerHTML="♥";
 
 }
 
@@ -763,95 +709,28 @@ document
 .getElementById("searchInput")
 .addEventListener("input",function(){
 
-const search =
-this.value.toLowerCase();
+const search=this.value.toLowerCase();
 
-const cards =
-document.querySelectorAll(".wallpaper");
+const cards=document.querySelectorAll("#featured .wallpaper");
 
-cards.forEach(card => {
+cards.forEach((card,index)=>{
 
-const name =
-card.dataset.name.toLowerCase();
+const names=[
+"sports car",
+"night sky",
+"nature",
+"luxury car"
+];
 
-if(name.includes(search)){
-
+if(names[index].includes(search)){
 card.style.display="block";
-
 }else{
-
 card.style.display="none";
-
 }
 
 });
 
 });
-
-
-/* CATEGORY */
-
-function showCategory(name){
-
-  const cards = document.querySelectorAll(".wallpaper");
-
-  cards.forEach((card,index)=>{
-
-    if(name === "Cars"){
-
-      card.style.display =
-      (index === 0 || index === 3)
-      ? "block"
-      : "none";
-
-    }
-
-    else if(name === "Anime"){
-
-      card.style.display =
-      (index === 1 || index === 2)
-      ? "block"
-      : "none";
-
-    }
-
-    else{
-
-      card.style.display = "block";
-
-    }
-
-  });
-
-  window.scrollTo({
-    top:500,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* FAVORITES */
-
-function showFavorites(){
-
-if(favorites.length===0){
-
-alert(
-"No favorites yet ❤️"
-);
-
-}else{
-
-alert(
-"You have " +
-favorites.length +
-" favorite wallpaper(s) ❤️"
-);
-
-}
-
-}
 
 
 /* PREMIUM */
@@ -859,19 +738,19 @@ favorites.length +
 function premiumMessage(){
 
 alert(
-"👑 Wall Nest Premium\n\nPremium wallpapers and features are coming soon!"
+"👑 Wall Nest Premium\n\nPremium membership is coming soon!"
 );
 
 }
 
 
-/* SETTINGS */
+/* EXPLORE */
 
-function settingsMessage(){
+function scrollToFeatured(){
 
-alert(
-"⚙️ Settings\n\nSettings will be added soon."
-);
+document.getElementById("featured").scrollIntoView({
+behavior:"smooth"
+});
 
 }
 
