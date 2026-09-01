@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wall Nest</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #08080d;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .app {
+      max-width: 500px;
+      margin: auto;
+      min-height: 100vh;
+      padding-bottom: 90px;
+    }
+
+    /* HEADER */
+
+    header {
+      padding: 24px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #9b4dff;
+    }
+
+    .crown {
+      font-size: 25px;
+    }
+
+    /* SEARCH */
+
+    .search {
+      margin: 0 18px 22px;
+      background: #18181f;
+      border: 1px solid #292933;
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .search input {
+      width: 90%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: white;
+      font-size: 15px;
+    }
+
+    /* HERO */
+
+    .hero {
+      margin: 0 18px 28px;
+      height: 210px;
+      border-radius: 22px;
+      padding: 24px;
+      display: flex;
+      align-items: flex-end;
+
+      background:
+        radial-gradient(circle at 80% 20%, #7438ff, transparent 35%),
+        linear-gradient(135deg, #171126, #30145d, #09090e);
+    }
+
+    .hero h1 {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #c8b2df;
+      margin-bottom: 15px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 17px;
+      background: #8d3cff;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    /* SECTION */
+
+    .section {
+      margin: 0 18px 28px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .section-title h2 {
+      font-size: 19px;
+    }
+
+    .section-title span {
+      color: #999;
+      font-size: 13px;
+    }
+
+    /* CATEGORIES */
+
+    .categories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .category {
+      height: 120px;
+      border-radius: 16px;
+      padding: 15px;
+      display: flex;
+      align-items: flex-end;
+      font-size: 17px;
+      font-weight: bold;
+      overflow: hidden;
+    }
+
+    .cars {
+      background:
+        radial-gradient(circle at 70% 30%, #ff5555, transparent 30%),
+        linear-gradient(135deg, #401010, #111);
+    }
+
+    .anime {
+      background:
+        radial-gradient(circle at 30% 20%, #5f4cff, transparent 35%),
+        linear-gradient(135deg, #17134a, #09090d);
+    }
+
+    /* WALLPAPERS */
+
+    .wallpapers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .wallpaper {
+      height: 230px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wallpaper:nth-child(1) {
+      background:
+        radial-gradient(circle at 30% 20%, #ff6b35, transparent 30%),
+        linear-gradient(150deg, #32130b, #09090d);
+    }
+
+    .wallpaper:nth-child(2) {
+      background:
+        radial-gradient(circle at 70% 20%, #9b4dff, transparent 35%),
+        linear-gradient(150deg, #241044, #09090d);
+    }
+
+    .wallpaper:nth-child(3) {
+      background:
+        radial-gradient(circle at 50% 30%, #00bcd4, transparent 35%),
+        linear-gradient(150deg, #062b35, #09090d);
+    }
+
+    .wallpaper:nth-child(4) {
+      background:
+        radial-gradient(circle at 30% 20%, #ffd54f, transparent 30%),
+        linear-gradient(150deg, #3a2d06, #09090d);
+    }
+
+    .wallpaper-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 65px;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 6px 9px;
+      border-radius: 7px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    .free {
+      background: #7438ff;
+    }
+
+    .premium {
+      background: #ffc529;
+      color: #111;
+    }
+
+    .heart {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #0009;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+    }
+
+    /* PREMIUM */
+
+    .premium-box {
+      margin: 0 18px;
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid #6330a8;
+      background: linear-gradient(135deg, #24113d, #111119);
+    }
+
+    .premium-box h2 {
+      margin-bottom: 8px;
+    }
+
+    .premium-box p {
+      color: #aaa;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .premium-box .button {
+      margin-top: 15px;
+    }
+
+    /* BOTTOM NAVIGATION */
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(500px, 100%);
+      height: 70px;
+
+      background: #15151b;
+      border-top: 1px solid #292933;
+
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .nav-item {
+      text-align: center;
+      color: #888;
+      font-size: 11px;
+    }
+
+    .nav-item.active {
+      color: #9b4dff;
+    }
+
+    .nav-icon {
+      font-size: 21px;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header>
+      <div class="logo">
+        Wall <span>Nest</span>
+      </div>
+
+      <div class="crown">
+        👑
+      </div>
+    </header>
+
+
+    <div class="search">
+      🔍
+      <input
+        type="text"
+        placeholder="Search wallpapers..."
+      >
+    </div>
+
+
+    <div class="hero">
+
+      <div>
+        <h1>Beautiful Wallpapers</h1>
+
+        <p>
+          Discover your perfect wallpaper
+        </p>
+
+        <div class="button">
+          Explore Now
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <div class="section-title">
+        <h2>Categories</h2>
+        <span>See All ›</span>
+      </div>
+
+
+      <div class="categories">
+
+        <div class="category cars">
+          🚗 Cars
+        </div>
+
+        <div class="category anime">
+          🎌 Anime
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <div class="section-title">
+        <h2>Featured</h2>
+        <span>See All ›</span>
+      </div>
+
+
+      <div class="wallpapers">
+
+        <div class="wallpaper">
+
+          <div class="badge free">
+            FREE
+          </div>
+
+          <div class="heart">
+            ♡
+          </div>
+
+          <div class="wallpaper-icon">
+            🏎️
+          </div>
+
+        </div>
+
+
+        <div class="wallpaper">
+
+          <div class="badge premium">
+            PREMIUM
+          </div>
+
+          <div class="heart">
+            ♡
+          </div>
+
+          <div class="wallpaper-icon">
+            🌌
+          </div>
+
+        </div>
+
+
+        <div class="wallpaper">
+
+          <div class="badge premium">
+            PREMIUM
+          </div>
+
+          <div class="heart">
+            ♡
+          </div>
+
+          <div class="wallpaper-icon">
+            🌊
+          </div>
+
+        </div>
+
+
+        <div class="wallpaper">
+
+          <div class="badge free">
+            FREE
+          </div>
+
+          <div class="heart">
+            ♡
+          </div>
+
+          <div class="wallpaper-icon">
+            🌄
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="premium-box">
+
+      <h2>
+        👑 Wall Nest Premium
+      </h2>
+
+      <p>
+        Unlock exclusive wallpapers,
+        HD quality and an ad-free experience.
+      </p>
+
+      <div class="button">
+        Explore Premium
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="bottom-nav">
+
+    <div class="nav-item active">
+      <div class="nav-icon">⌂</div>
+      Home
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">▦</div>
+      Categories
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">♡</div>
+      Favorites
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">♛</div>
+      Premium
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">⚙</div>
+      Settings
+    </div>
+
+  </div>
+
+</body>
+</html>
