@@ -315,6 +315,74 @@ color:#fff;
 background:#292929;
 color:#fff;
 }
+  /* PREMIUM POPUP */
+
+.premium-popup{
+display:none;
+position:fixed;
+inset:0;
+background:#0009;
+z-index:200;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.premium-popup.show{
+display:flex;
+}
+
+.premium-popup-box{
+width:100%;
+max-width:380px;
+padding:25px;
+border-radius:22px;
+background:linear-gradient(145deg,#24113d,#111119);
+border:1px solid #8d3cff;
+box-shadow:0 0 40px #8d3cff55;
+text-align:center;
+}
+
+.premium-popup-icon{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.premium-popup-box h2{
+font-size:23px;
+margin-bottom:8px;
+}
+
+.premium-popup-box p{
+color:#bbb;
+font-size:14px;
+line-height:1.5;
+margin-bottom:20px;
+}
+
+.premium-popup-buttons{
+display:flex;
+gap:10px;
+justify-content:center;
+}
+
+.premium-popup-buttons button{
+border:0;
+padding:11px 16px;
+border-radius:11px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.premium-join{
+background:#8d3cff;
+color:white;
+}
+
+.premium-cancel{
+background:#292929;
+color:#fff;
+}
 </style>
 </head>
 
@@ -559,7 +627,35 @@ HD quality and an ad-free experience.
 </div>
 </div>
 <!-- BOTTOM NAV -->
+<!-- PREMIUM POPUP -->
 
+<div id="premiumPopup" class="premium-popup">
+
+  <div class="premium-popup-box">
+
+    <div class="premium-popup-icon">👑</div>
+
+    <h2>Premium Access</h2>
+
+    <p>
+      Unlock exclusive wallpapers and enjoy Wall Nest Premium.
+    </p>
+
+    <div class="premium-popup-buttons">
+
+      <button class="premium-join">
+        💎 Get Premium
+      </button>
+
+      <button class="premium-cancel" onclick="closePremiumPopup()">
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 <div class="bottom-nav">
 
 <div class="nav-item active" onclick="goHome()">
