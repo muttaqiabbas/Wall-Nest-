@@ -533,22 +533,22 @@ HD quality and an ad-free experience.
 
 <div class="wallpapers">
 
-<div class="wallpaper w2">
+<div class="wallpaper w2" onclick="premiumLocked()">
 <div class="badge premium">PREMIUM</div>
 <div class="heart">🔒</div>
 </div>
 
-<div class="wallpaper w3">
+<div class="wallpaper w3" onclick="premiumLocked()">
 <div class="badge premium">PREMIUM</div>
 <div class="heart">🔒</div>
 </div>
 
-<div class="wallpaper c2">
+<div class="wallpaper c2" onclick="premiumLocked()">
 <div class="badge premium">PREMIUM</div>
 <div class="heart">🔒</div>
 </div>
 
-<div class="wallpaper a2">
+<div class="wallpaper a2" onclick="premiumLocked()">
 <div class="badge premium">PREMIUM</div>
 <div class="heart">🔒</div>
 </div>
@@ -803,14 +803,13 @@ card.style.display="none";
 
 /* PREMIUM */
 
-function premiumMessage(){
+/* PREMIUM LOCK */
 
-document.getElementById("homePage").classList.remove("active");
-document.getElementById("carsPage").classList.remove("active");
-document.getElementById("animePage").classList.remove("active");
-document.getElementById("premiumPage").classList.add("active");
+function premiumLocked(){
 
-window.scrollTo(0,0);
+alert(
+"🔒 Premium Wallpaper\n\n👑 Ye wallpaper sirf Wall Nest Premium members ke liye hai.\n\n💎 Premium Membership unlock karein."
+);
 
 }
 
