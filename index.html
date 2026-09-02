@@ -383,6 +383,45 @@ color:white;
 background:#292929;
 color:#fff;
 }
+  .plans{
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-top:20px;
+}
+
+.plan{
+padding:20px;
+border-radius:18px;
+background:#171722;
+border:1px solid #333;
+text-align:center;
+}
+
+.plan h3{
+margin-bottom:8px;
+}
+
+.plan h2{
+font-size:28px;
+margin:8px 0;
+}
+
+.plan p{
+color:#aaa;
+font-size:13px;
+margin-bottom:15px;
+}
+
+.plan button{
+border:0;
+padding:11px 20px;
+border-radius:12px;
+background:#8d3cff;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
 </style>
 </head>
 
@@ -589,7 +628,29 @@ HD quality and an ad-free experience.
 <div class="button" onclick="openPremiumPopup()">
 💎 Premium Membership
 </div>
-💎 Premium Membership
+<div class="plans">
+
+<div class="plan">
+<h3>💎 1 Month</h3>
+<h2>₹49</h2>
+<p>Premium wallpapers</p>
+<button onclick="startPremium()">Choose Plan</button>
+</div>
+
+<div class="plan">
+<h3>🔥 6 Months</h3>
+<h2>₹199</h2>
+<p>Premium wallpapers</p>
+<button onclick="startPremium()">Choose Plan</button>
+</div>
+
+<div class="plan">
+<h3>👑 1 Year</h3>
+<h2>₹299</h2>
+<p>Premium wallpapers</p>
+<button onclick="startPremium()">Choose Plan</button>
+</div>
+
 </div>
 
 </div>
@@ -925,8 +986,7 @@ function startPremium(){
 
 closePremiumPopup();
 
-alert("💎 Premium\n\nMembership setup is coming soon!");
-
+alert("👑 Wall Nest Premium\n\n💎 1 Month — ₹49\n🔥 6 Months — ₹199\n👑 1 Year — ₹299\n\n✨ Unlock all premium wallpapers!");
   }
 
 /* PREMIUM LOCK */
