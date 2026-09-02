@@ -645,9 +645,9 @@ HD quality and an ad-free experience.
 
     <div class="premium-popup-buttons">
 
-      <button class="premium-join">
-        💎 Get Premium
-      </button>
+      <button class="premium-join" onclick="startPremium()">
+    💎 Get Premium
+</button>
 
       <button class="premium-cancel" onclick="closePremiumPopup()">
         Close
@@ -920,6 +920,14 @@ function closePremiumPopup(){
 document.getElementById("premiumPopup").classList.remove("show");
 }
 
+  
+function startPremium(){
+
+closePremiumPopup();
+
+alert("💎 Premium\n\nMembership setup is coming soon!");
+
+  }
 
 /* PREMIUM LOCK */
 
