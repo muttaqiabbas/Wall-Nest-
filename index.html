@@ -484,6 +484,24 @@ color:white;
 font-weight:bold;
 cursor:pointer;
 }
+  /* POPULAR PLAN */
+
+.plan.popular{
+border:2px solid #8d3cff;
+box-shadow:0 0 25px #8d3cff44;
+position:relative;
+}
+
+.popular-badge{
+display:inline-block;
+background:#8d3cff;
+color:white;
+padding:5px 12px;
+border-radius:20px;
+font-size:11px;
+font-weight:bold;
+margin-bottom:10px;
+}
 </style>
 </head>
 
@@ -699,11 +717,18 @@ HD quality and an ad-free experience.
 <button onclick="startPremium()">Choose Plan</button>
 </div>
 
-<div class="plan">
+<div class="plan popular">
+
+<div class="popular-badge">
+🔥 MOST POPULAR
+</div>
+
 <h3>🔥 6 Months</h3>
 <h2>₹199</h2>
 <p>Premium wallpapers</p>
+
 <button onclick="startPremium()">Choose Plan</button>
+
 </div>
 
 <div class="plan">
