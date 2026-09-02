@@ -586,7 +586,9 @@ Unlock exclusive premium wallpapers,
 HD quality and an ad-free experience.
 </p>
 
-<div class="button">
+<div class="button" onclick="openPremiumPopup()">
+💎 Premium Membership
+</div>
 💎 Premium Membership
 </div>
 
@@ -901,13 +903,12 @@ card.style.display="none";
 
 function premiumMessage(){
 
-document.getElementById("homePage").classList.remove("active");
-document.getElementById("carsPage").classList.remove("active");
-document.getElementById("animePage").classList.remove("active");
-document.getElementById("premiumPage").classList.add("active");
+function openPremiumPopup(){
+document.getElementById("premiumPopup").classList.add("show");
+}
 
-window.scrollTo(0,0);
-
+function closePremiumPopup(){
+document.getElementById("premiumPopup").classList.remove("show");
 }
 
 
