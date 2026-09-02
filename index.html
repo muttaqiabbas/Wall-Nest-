@@ -725,6 +725,37 @@ Close
 </div>
 
 </div>
+  <!-- PAYMENT POPUP -->
+
+<div id="paymentPopup" class="premium-popup">
+
+<div class="premium-popup-box">
+
+<div class="premium-popup-icon">💳</div>
+
+<h2>Confirm Your Plan</h2>
+
+<p id="paymentPlan">1 Month - ₹49</p>
+
+<p>
+You are selecting Wall Nest Premium.
+</p>
+
+<div class="premium-popup-buttons">
+
+<button class="premium-join" onclick="continuePayment()">
+💳 Continue to Payment
+</button>
+
+<button class="premium-cancel" onclick="closePaymentPopup()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+</div>
 <div class="bottom-nav">
 
 <div class="nav-item active" onclick="goHome()">
@@ -998,9 +1029,25 @@ function selectPremiumPlan(plan){
 
 closePremiumPopup();
 
-alert("👑 Selected Plan\n\n" + plan + "\n\n💳 Payment setup coming next!");
+document.getElementById("paymentPlan").innerHTML = plan;
 
-  }
+document.getElementById("paymentPopup").classList.add("show");
+
+}
+
+function closePaymentPopup(){
+
+document.getElementById("paymentPopup").classList.remove("show");
+
+}
+
+function continuePayment(){
+
+alert("💳 Payment System\n\nPayment integration will be added when Wall Nest becomes an Android app.\n\n👑 Your selected Premium plan is ready!");
+
+}
+
+  
 /* PREMIUM LOCK */
 
 function premiumLocked(){
