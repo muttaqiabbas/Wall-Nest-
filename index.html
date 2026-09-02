@@ -422,6 +422,68 @@ color:white;
 font-weight:bold;
 cursor:pointer;
 }
+/* PAYMENT CONFIRMATION */
+
+.payment-confirm-box{
+width:100%;
+max-width:380px;
+padding:28px 22px;
+border-radius:24px;
+background:linear-gradient(145deg,#24113d,#111119);
+border:1px solid #8d3cff;
+box-shadow:0 0 40px #8d3cff55;
+text-align:center;
+}
+
+.payment-icon{
+font-size:45px;
+margin-bottom:10px;
+}
+
+.payment-confirm-box h2{
+font-size:24px;
+margin-bottom:8px;
+}
+
+.payment-plan{
+font-size:20px;
+font-weight:bold;
+color:#c77dff;
+margin:12px 0;
+}
+
+.payment-note{
+color:#aaa;
+font-size:13px;
+line-height:1.5;
+margin-bottom:22px;
+}
+
+.payment-buttons{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.payment-pay{
+border:0;
+padding:13px;
+border-radius:12px;
+background:#8d3cff;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.payment-cancel{
+border:0;
+padding:13px;
+border-radius:12px;
+background:#292929;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
 </style>
 </head>
 
@@ -725,29 +787,33 @@ Close
 </div>
 
 </div>
-  <!-- PAYMENT POPUP -->
+
+<!-- PAYMENT POPUP -->
 
 <div id="paymentPopup" class="premium-popup">
 
-<div class="premium-popup-box">
+<div class="payment-confirm-box">
 
-<div class="premium-popup-icon">💳</div>
+<div class="payment-icon">💳</div>
 
 <h2>Confirm Your Plan</h2>
 
-<p id="paymentPlan">1 Month - ₹49</p>
+<div id="paymentPlan" class="payment-plan">
+1 Month - ₹49
+</div>
 
-<p>
-You are selecting Wall Nest Premium.
-</p>
+<div class="payment-note">
+You are selecting Wall Nest Premium.<br>
+Unlock exclusive wallpapers and HD quality.
+</div>
 
-<div class="premium-popup-buttons">
+<div class="payment-buttons">
 
-<button class="premium-join" onclick="continuePayment()">
-💳 Continue to Payment
+<button class="payment-pay" onclick="continuePayment()">
+💳 Pay Securely
 </button>
 
-<button class="premium-cancel" onclick="closePaymentPopup()">
+<button class="payment-cancel" onclick="closePaymentPopup()">
 Cancel
 </button>
 
@@ -756,6 +822,8 @@ Cancel
 </div>
 
 </div>
+
+
 <div class="bottom-nav">
 
 <div class="nav-item active" onclick="goHome()">
