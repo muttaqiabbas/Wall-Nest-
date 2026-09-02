@@ -694,29 +694,35 @@ HD quality and an ad-free experience.
 
 <div id="premiumPopup" class="premium-popup">
 
-  <div class="premium-popup-box">
+<div class="premium-popup-box">
 
-    <div class="premium-popup-icon">👑</div>
+<div class="premium-popup-icon">👑</div>
 
-    <h2>Premium Access</h2>
+<h2>Choose Your Plan</h2>
 
-    <p>
-      Unlock exclusive wallpapers and enjoy Wall Nest Premium.
-    </p>
+<p>Select a Premium membership plan</p>
 
-    <div class="premium-popup-buttons">
+<div class="premium-popup-buttons">
 
-      <button class="premium-join" onclick="startPremium()">
-    💎 Get Premium
+<button class="premium-join" onclick="selectPremiumPlan('1 Month - ₹49')">
+💎 1 Month — ₹49
 </button>
 
-      <button class="premium-cancel" onclick="closePremiumPopup()">
-        Close
-      </button>
+<button class="premium-join" onclick="selectPremiumPlan('6 Months - ₹199')">
+🔥 6 Months — ₹199
+</button>
 
-    </div>
+<button class="premium-join" onclick="selectPremiumPlan('1 Year - ₹299')">
+👑 1 Year — ₹299
+</button>
 
-  </div>
+<button class="premium-cancel" onclick="closePremiumPopup()">
+Close
+</button>
+
+</div>
+
+</div>
 
 </div>
 <div class="bottom-nav">
@@ -988,7 +994,13 @@ closePremiumPopup();
 
 alert("👑 Wall Nest Premium\n\n💎 1 Month — ₹49\n🔥 6 Months — ₹199\n👑 1 Year — ₹299\n\n✨ Unlock all premium wallpapers!");
   }
+function selectPremiumPlan(plan){
 
+closePremiumPopup();
+
+alert("👑 Selected Plan\n\n" + plan + "\n\n💳 Payment setup coming next!");
+
+  }
 /* PREMIUM LOCK */
 
 function premiumLocked(){
