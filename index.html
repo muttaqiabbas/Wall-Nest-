@@ -803,15 +803,25 @@ card.style.display="none";
 
 /* PREMIUM */
 
+function premiumMessage(){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.add("active");
+
+window.scrollTo(0,0);
+
+}
+
+
 /* PREMIUM LOCK */
 
 function premiumLocked(){
 
-alert(
-"🔒 Premium Wallpaper\n\n👑 Ye wallpaper sirf Wall Nest Premium members ke liye hai.\n\n💎 Premium Membership unlock karein."
-);
+alert("🔒 Premium Wallpaper\n\n👑 Ye wallpaper sirf Wall Nest Premium members ke liye hai.\n\n💎 Premium Membership unlock karein.");
 
-}
+  }
 
 /* EXPLORE */
 
