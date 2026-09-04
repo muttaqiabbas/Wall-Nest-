@@ -1263,7 +1263,11 @@ document.getElementById("heart"+index).innerHTML="♥";
 }
 localStorage.setItem("wallnestFavorites",JSON.stringify(favorites));
 }
+try{
 favorites=JSON.parse(localStorage.getItem("wallnestFavorites")) || [];
+}catch(e){
+favorites=[];
+}
 function renderFavorites(){
 
 const list=document.getElementById("favoritesList");
