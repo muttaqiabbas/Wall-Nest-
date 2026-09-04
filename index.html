@@ -1138,6 +1138,7 @@ showPreview(key);
 }
 
 
+
 function openCategoryPreview(key){
 
 if(premiumWallpapers.includes(key) && !isPremium){
@@ -1179,6 +1180,11 @@ document.getElementById("preview").classList.remove("show");
 
 function downloadWallpaper(){
 
+if(premiumWallpapers.includes(currentWallpaper) && !isPremium){
+premiumMessage();
+return;
+}
+
 const link=document.createElement("a");
 
 link.href=wallpapers[currentWallpaper];
@@ -1190,7 +1196,6 @@ link.download="wallnest-wallpaper.jpg";
 link.click();
 
 }
-
 
 /* FAVORITE */
 
