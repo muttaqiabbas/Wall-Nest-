@@ -1258,7 +1258,7 @@ favorites.push(index);
 document.getElementById("heart"+index).innerHTML="♥";
 
 }
-
+localStorage.setItem("wallnestFavorites",JSON.stringify(favorites));
 }
 function renderFavorites(){
 
