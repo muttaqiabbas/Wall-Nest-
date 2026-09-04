@@ -968,7 +968,33 @@ Cancel
 
 </div>
 
+<!-- FAVORITES PAGE -->
 
+<div id="favoritesPage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>❤️ Favorites</h1>
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>❤️ Your Favorites</h2>
+<span>Saved</span>
+</div>
+
+<div id="favoritesList" class="wallpapers">
+
+<p style="color:#aaa;text-align:center;width:100%;">
+No favorite wallpapers yet ❤️
+</p>
+
+</div>
+
+</div>
+
+</div>
 <div class="bottom-nav">
 
 <div class="nav-item active" onclick="goHome()">
@@ -986,12 +1012,17 @@ Cars
 Anime
 </div>
 
+
+<div class="nav-item" onclick="openFavorites()">
+<div class="nav-icon">❤️</div>
+Favorites
+</div>
+
 <div class="nav-item" onclick="premiumMessage()">
-<div class="nav-icon">♛</div>
+<div class="nav-icon">👑</div>
 Premium
 </div>
 
-</div>
 
 
 <!-- PREVIEW -->
@@ -1116,7 +1147,18 @@ document.getElementById("homePage").classList.add("active");
 window.scrollTo(0,0);
 
 }
+function openFavorites(){
 
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+
+document.getElementById("favoritesPage").classList.add("active");
+renderFavorites();
+window.scrollTo(0,0);
+
+                     }
 
 /* PREVIEW */
 
@@ -1218,7 +1260,45 @@ document.getElementById("heart"+index).innerHTML="♥";
 }
 
 }
+function renderFavorites(){
 
+const list=document.getElementById("favoritesList");
+
+if(favorites.length===0){
+
+list.innerHTML=
+'<p style="color:#aaa;text-align:center;width:100%;">No favorite wallpapers yet ❤️</p>';
+
+return;
+
+}
+
+list.innerHTML="";
+
+const keys=["w1","w2","w3","w4"];
+
+favorites.forEach(index=>{
+
+const key=keys[index];
+
+const card=document.createElement("div");
+
+card.className="wallpaper";
+
+card.style.backgroundImage="url('"+wallpapers[key]+"')";
+
+card.style.backgroundSize="cover";
+card.style.backgroundPosition="center";
+
+card.onclick=function(){
+openCategoryPreview(key);
+};
+
+list.appendChild(card);
+
+});
+
+}
 
 /* SEARCH */
 
