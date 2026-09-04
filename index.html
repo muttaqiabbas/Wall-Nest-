@@ -1049,6 +1049,40 @@ let currentWallpaper="";
 let favorites=[];
 const premiumWallpapers = ["w2","w3","c2","c4","a2","a4"];
 let isPremium = localStorage.getItem("wallnestPremium") === "true";
+function updatePremiumUI(){
+
+const premiumCards = document.querySelectorAll("#premiumPage .wallpaper");
+
+premiumCards.forEach(card => {
+
+const badge = card.querySelector(".badge");
+const heart = card.querySelector(".heart");
+
+if(isPremium){
+
+if(badge){
+badge.innerHTML = "PREMIUM ✓";
+}
+
+if(heart){
+heart.innerHTML = "🔓";
+}
+
+}else{
+
+if(badge){
+badge.innerHTML = "PREMIUM";
+}
+
+if(heart){
+heart.innerHTML = "🔒";
+}
+
+}
+
+});
+
+}
 /* CATEGORY */
 
 function openCategory(category){
@@ -1263,6 +1297,7 @@ closePaymentPopup();
 
 isPremium = true;
 localStorage.setItem("wallnestPremium", "true");
+updatePremiumUI();
 
 showPremiumSuccess();
 
@@ -1279,8 +1314,11 @@ document.getElementById("premiumSuccess").classList.remove("show");
 
 function premiumLocked(){
 
-alert("👑 Premium Access\n\n✨ Unlock exclusive wallpapers with Wall Nest Premium.");
+if(isPremium){
+return;
+}
 
+openPremiumPopup();
 }
 
 /* EXPLORE */
