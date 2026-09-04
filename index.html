@@ -362,6 +362,7 @@ margin-bottom:20px;
 
 .premium-popup-buttons{
 display:flex;
+flex-direction:column;
 gap:10px;
 justify-content:center;
 }
@@ -870,7 +871,11 @@ HD quality and an ad-free experience.
 </div>
 
  
-  <!-- PREMIUM SUCCESS POPUP -->
+  </div>
+</div>
+</div>
+
+<!-- PREMIUM SUCCESS POPUP -->
 
 <div id="premiumSuccess" class="premium-popup">
 
@@ -1008,8 +1013,10 @@ Cars
 Anime
 </div>
 
-
-
+<div class="nav-item" onclick="openFavorites()">
+<div class="nav-icon">❤️</div>
+Favorites
+</div>
 
 <div class="nav-item" onclick="premiumMessage()">
 <div class="nav-icon">👑</div>
@@ -1017,6 +1024,8 @@ Premium
 </div>
 
 
+
+</div>
 
 <!-- PREVIEW -->
 
@@ -1114,6 +1123,8 @@ function openCategory(category){
 document.getElementById("homePage").classList.remove("active");
 document.getElementById("carsPage").classList.remove("active");
 document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("favoritesPage").classList.remove("active");
 
 if(category==="cars"){
 document.getElementById("carsPage").classList.add("active");
@@ -1135,6 +1146,7 @@ function goHome(){
 document.getElementById("carsPage").classList.remove("active");
 document.getElementById("animePage").classList.remove("active");
 document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("favoritesPage").classList.remove("active");
 document.getElementById("homePage").classList.add("active");
 
 window.scrollTo(0,0);
