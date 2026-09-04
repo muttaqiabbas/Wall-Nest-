@@ -1153,12 +1153,15 @@ document.getElementById("homePage").classList.remove("active");
 document.getElementById("carsPage").classList.remove("active");
 document.getElementById("animePage").classList.remove("active");
 document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("favoritesPage").classList.remove("active");
 
 document.getElementById("favoritesPage").classList.add("active");
+
 renderFavorites();
+
 window.scrollTo(0,0);
 
-                     }
+}
 
 /* PREVIEW */
 
@@ -1260,14 +1263,19 @@ document.getElementById("heart"+index).innerHTML="♥";
 }
 localStorage.setItem("wallnestFavorites",JSON.stringify(favorites));
 }
+favorites=JSON.parse(localStorage.getItem("wallnestFavorites")) || [];
 function renderFavorites(){
 
 const list=document.getElementById("favoritesList");
 
+if(!list){
+return;
+}
+
 if(favorites.length===0){
 
 list.innerHTML=
-'<p style="color:#aaa;text-align:center;width:100%;">No favorite wallpapers yet ❤️</p>';
+'<p style="color:#aaa;text-align:center;width:100%;padding:30px;">No favorite wallpapers yet ❤️</p>';
 
 return;
 
@@ -1281,17 +1289,25 @@ favorites.forEach(index=>{
 
 const key=keys[index];
 
+if(!wallpapers[key]){
+return;
+}
+
 const card=document.createElement("div");
 
 card.className="wallpaper";
 
-card.style.backgroundImage="url('"+wallpapers[key]+"')";
+card.style.backgroundImage=
+"url('"+wallpapers[key]+"')";
 
 card.style.backgroundSize="cover";
+
 card.style.backgroundPosition="center";
 
 card.onclick=function(){
+
 openCategoryPreview(key);
+
 };
 
 list.appendChild(card);
