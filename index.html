@@ -538,6 +538,20 @@ border-bottom:0;
 .benefit-icon{
 font-size:22px;
 }
+  /* PREMIUM SUCCESS */
+
+#premiumSuccess .premium-popup-box{
+border-color:#ffd700;
+box-shadow:0 0 45px #ffd70055;
+}
+
+#premiumSuccess h2{
+color:#ffd700;
+}
+
+#premiumSuccess .premium-join{
+width:100%;
+}
 </style>
 </head>
 
@@ -845,6 +859,28 @@ HD quality and an ad-free experience.
 </div>
 
 </div>
+</div>
+  <!-- PREMIUM SUCCESS POPUP -->
+
+<div id="premiumSuccess" class="premium-popup">
+
+<div class="premium-popup-box">
+
+<div class="premium-popup-icon">👑</div>
+
+<h2>Premium Activated!</h2>
+
+<p>
+✨ Congratulations!<br>
+All Premium wallpapers are now unlocked.
+</p>
+
+<button class="premium-join" onclick="closePremiumSuccess()">
+Continue
+</button>
+
+</div>
+
 </div>
 <!-- BOTTOM NAV -->
 <!-- PREMIUM POPUP -->
@@ -1214,10 +1250,16 @@ closePaymentPopup();
 isPremium = true;
 localStorage.setItem("wallnestPremium", "true");
 
-alert("👑 Premium Activated!\n\n✨ All premium wallpapers are now unlocked!");
+showPremiumSuccess();
 
 }
+function showPremiumSuccess(){
+document.getElementById("premiumSuccess").classList.add("show");
+}
 
+function closePremiumSuccess(){
+document.getElementById("premiumSuccess").classList.remove("show");
+  }
   
 /* PREMIUM LOCK */
 
