@@ -1451,7 +1451,93 @@ behavior:"smooth"
 });
 
 }
+/* SEARCH */
 
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", function(){
+
+const query = this.value.toLowerCase().trim();
+
+if(query === ""){
+goHome();
+return;
+}
+
+if(query.includes("car") || query.includes("vehicle")){
+openCategory("cars");
+return;
+}
+
+if(query.includes("anime") || query.includes("manga")){
+openCategory("anime");
+return;
+}
+
+if(query.includes("premium") || query.includes("pro")){
+premiumMessage();
+return;
+}
+
+const featured = document.querySelectorAll("#featured .wallpaper");
+let found = false;
+
+featured.forEach(card => {
+
+const isFree = card.querySelector(".free");
+const isPremium = card.querySelector(".premium");
+
+let match = false;
+
+if(query.includes("free") && isFree){
+match = true;
+}
+
+if(query.includes("wallpaper")){
+match = true;
+}
+
+card.style.display = match ? "" : "none";
+
+if(match){
+found = true;
+}
+
+});
+
+if(!found){
+
+featured.forEach(card => {
+card.style.display = "none";
+});
+
+if(!document.getElementById("noSearchResults")){
+
+const message = document.createElement("p");
+
+message.id = "noSearchResults";
+message.innerHTML = "🔍 No wallpapers found";
+
+message.style.textAlign = "center";
+message.style.color = "#999";
+message.style.padding = "25px 0";
+message.style.fontSize = "15px";
+
+document.getElementById("featured").appendChild(message);
+
+}
+
+}else{
+
+const oldMessage = document.getElementById("noSearchResults");
+
+if(oldMessage){
+oldMessage.remove();
+}
+
+}
+
+});
 </script>
 <div class="creator-credit">
 Created by <strong>Muttaqi Abbas</strong> ❤️
