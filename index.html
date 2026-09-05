@@ -1464,12 +1464,26 @@ goHome();
 return;
 }
 
-if(query.includes("car") || query.includes("vehicle")){
+if(
+query.includes("car") ||
+query.includes("cars") ||
+query.includes("vehicle") ||
+query.includes("bmw") ||
+query.includes("audi") ||
+query.includes("mercedes") ||
+query.includes("supercar") ||
+query.includes("sports car")
+){
 openCategory("cars");
 return;
 }
 
-if(query.includes("anime") || query.includes("manga")){
+if(
+query.includes("anime") ||
+query.includes("manga") ||
+query.includes("cartoon") ||
+query.includes("otaku")
+){
 openCategory("anime");
 return;
 }
