@@ -715,22 +715,22 @@ Explore Premium
 
 <div class="wallpaper c1" onclick="openCategoryPreview('c1')">
 <div class="badge free">FREE</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'c1')">♡</div>
 </div>
 
 <div class="wallpaper c2" onclick="openCategoryPreview('c2')">
 <div class="badge premium">PREMIUM</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'c2')">♡</div>
 </div>
 
 <div class="wallpaper c3" onclick="openCategoryPreview('c3')">
 <div class="badge free">FREE</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'c3')">♡</div>
 </div>
 
 <div class="wallpaper c4" onclick="openCategoryPreview('c4')">
 <div class="badge premium">PREMIUM</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'c4')">♡</div>
 </div>
 
 </div>
@@ -1452,7 +1452,36 @@ list.appendChild(card);
 });
 
 }
+/* CATEGORY FAVORITE */
 
+function favoriteCategory(event,key){
+
+event.stopPropagation();
+
+let categoryFavorites =
+JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
+
+if(categoryFavorites.includes(key)){
+
+categoryFavorites =
+categoryFavorites.filter(x => x !== key);
+
+event.currentTarget.innerHTML="♡";
+
+}else{
+
+categoryFavorites.push(key);
+
+event.currentTarget.innerHTML="♥";
+
+}
+
+localStorage.setItem(
+"wallnestCategoryFavorites",
+JSON.stringify(categoryFavorites)
+);
+
+   }
 /* SEARCH */
 
 document
