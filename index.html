@@ -1498,26 +1498,83 @@ document
 .getElementById("searchInput")
 .addEventListener("input",function(){
 
-const search=this.value.toLowerCase();
+const search=this.value.toLowerCase().trim();
 
-const cards=document.querySelectorAll("#featured .wallpaper");
+const cards=document.querySelectorAll(
+"#homePage .wallpaper, #carsPage .wallpaper, #animePage .wallpaper"
+);
 
-cards.forEach((card,index)=>{
+const names={
+w1:"sports car car",
+w2:"night sky nature",
+w3:"nature landscape",
+w4:"luxury car",
+c1:"sports car",
+c2:"luxury car",
+c3:"classic car",
+c4:"sedan car",
+a1:"anime",
+a2:"anime",
+a3:"anime",
+a4:"anime"
+};
 
-const names=[
-"sports car",
-"night sky",
-"nature",
-"luxury car"
-];
+let foundCars=false;
+let foundAnime=false;
 
-if(names[index].includes(search)){
-card.style.display="block";
-}else{
-card.style.display="none";
+cards.forEach(card=>{
+
+let key="";
+
+Object.keys(names).forEach(name=>{
+
+if(card.classList.contains(name)){
+key=name;
 }
 
 });
+
+if(!search){
+
+card.style.display="";
+
+}else if(names[key] && names[key].includes(search)){
+
+card.style.display="";
+
+if(key.startsWith("c")){
+foundCars=true;
+}
+
+if(key.startsWith("a")){
+foundAnime=true;
+}
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+if(search && foundCars){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("carsPage").classList.add("active");
+
+}
+
+if(search && !foundCars && foundAnime){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("animePage").classList.add("active");
+
+}
 
 });
 
