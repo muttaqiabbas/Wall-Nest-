@@ -997,7 +997,75 @@ Cancel
 </div>
 
 </div>
+<!-- ALL WALLPAPERS PAGE -->
 
+<div id="allWallpapersPage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>🖼️ All Wallpapers</h1>
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>All Wallpapers</h2>
+<span>12 Wallpapers</span>
+</div>
+
+<div class="wallpapers">
+
+<div class="wallpaper w1" onclick="openCategoryPreview('w1')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper w2" onclick="openCategoryPreview('w2')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+<div class="wallpaper w3" onclick="openCategoryPreview('w3')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+<div class="wallpaper w4" onclick="openCategoryPreview('w4')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper c1" onclick="openCategoryPreview('c1')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper c2" onclick="openCategoryPreview('c2')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+<div class="wallpaper c3" onclick="openCategoryPreview('c3')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper c4" onclick="openCategoryPreview('c4')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+<div class="wallpaper a1" onclick="openCategoryPreview('a1')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper a2" onclick="openCategoryPreview('a2')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+<div class="wallpaper a3" onclick="openCategoryPreview('a3')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper a4" onclick="openCategoryPreview('a4')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+</div>
+</div>
+</div>
 <!-- FAVORITES PAGE -->
 
 <div id="favoritesPage" class="page">
@@ -1473,15 +1541,15 @@ behavior:"smooth"
 
 function showAllWallpapers(){
 
-goHome();
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("favoritesPage").classList.remove("active");
+document.getElementById("allWallpapersPage").classList.add("active");
 
-const featured = document.querySelectorAll("#featured .wallpaper");
-
-featured.forEach(card => {
-card.style.display = "";
-});
-
-document.getElementById("featured").scrollIntoView({
+window.scrollTo({
+top:0,
 behavior:"smooth"
 });
 
