@@ -629,7 +629,7 @@ font-weight:600;
 
 <div class="section-title">
 <h2>Categories</h2>
-<span>See All ›</span>
+<span onclick="showAllCategories()">See All ›</span>
 </div>
 
 <div class="categories">
@@ -1065,6 +1065,37 @@ Cancel
 
 </div>
 </div>
+</div>
+<!-- ALL CATEGORIES PAGE -->
+
+<div id="allCategoriesPage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>📂 Categories</h1>
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>Browse Categories</h2>
+<span>2 Categories</span>
+</div>
+
+<div class="categories">
+
+<div class="category cars" onclick="openCategory('cars')">
+🚗 Cars
+</div>
+
+<div class="category anime" onclick="openCategory('anime')">
+🎌 Anime
+</div>
+
+</div>
+
+</div>
+
 </div>
 <!-- FAVORITES PAGE -->
 
@@ -1547,6 +1578,25 @@ document.getElementById("animePage").classList.remove("active");
 document.getElementById("premiumPage").classList.remove("active");
 document.getElementById("favoritesPage").classList.remove("active");
 document.getElementById("allWallpapersPage").classList.add("active");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+/* SHOW ALL CATEGORIES */
+
+function showAllCategories(){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("favoritesPage").classList.remove("active");
+document.getElementById("allWallpapersPage").classList.remove("active");
+
+document.getElementById("allCategoriesPage").classList.add("active");
 
 window.scrollTo({
 top:0,
