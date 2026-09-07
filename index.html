@@ -1409,22 +1409,32 @@ if(!list){
 return;
 }
 
-if(favorites.length===0){
+let categoryFavorites =
+JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
+
+let allFavorites = [];
+
+favorites.forEach(index=>{
+allFavorites.push(["w"+(index+1)]);
+});
+
+categoryFavorites.forEach(key=>{
+allFavorites.push([key]);
+});
+
+if(allFavorites.length===0){
 
 list.innerHTML=
 '<p style="color:#aaa;text-align:center;width:100%;padding:30px;">No favorite wallpapers yet ❤️</p>';
 
 return;
-
 }
 
 list.innerHTML="";
 
-const keys=["w1","w2","w3","w4"];
+allFavorites.forEach(item=>{
 
-favorites.forEach(index=>{
-
-const key=keys[index];
+const key=item[0];
 
 if(!wallpapers[key]){
 return;
