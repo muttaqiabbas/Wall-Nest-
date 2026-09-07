@@ -1469,6 +1469,23 @@ behavior:"smooth"
 });
 
 }
+/* SHOW ALL WALLPAPERS */
+
+function showAllWallpapers(){
+
+goHome();
+
+const featured = document.querySelectorAll("#featured .wallpaper");
+
+featured.forEach(card => {
+card.style.display = "";
+});
+
+document.getElementById("featured").scrollIntoView({
+behavior:"smooth"
+});
+
+}
 /* SEARCH */
 
 const searchInput = document.getElementById("searchInput");
