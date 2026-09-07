@@ -1558,7 +1558,7 @@ card.style.display="none";
 
 });
 
-if(search && foundCars){
+if(search.includes("car")){
 
 document.getElementById("homePage").classList.remove("active");
 document.getElementById("animePage").classList.remove("active");
@@ -1567,7 +1567,7 @@ document.getElementById("carsPage").classList.add("active");
 
 }
 
-if(search && !foundCars && foundAnime){
+if(search.includes("anime")){
 
 document.getElementById("homePage").classList.remove("active");
 document.getElementById("carsPage").classList.remove("active");
