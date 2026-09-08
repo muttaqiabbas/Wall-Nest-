@@ -10,7 +10,7 @@
 
 body{
 background:#08080d;
-color:#fff;p
+color:#fff;
 font-family:Arial,sans-serif;
 }
 
@@ -1166,9 +1166,7 @@ Premium
 <button class="control download" onclick="downloadWallpaper()">
 ⬇️ Download
 </button>
-<button class="control" onclick="favoritePreview()">
-❤️ Favorite
-</button>
+
 <button class="control close" onclick="closePreview()">
 ✕ Close
 </button>
@@ -1398,94 +1396,10 @@ document.getElementById("heart"+index).innerHTML="♥";
 }
 localStorage.setItem("wallnestFavorites",JSON.stringify(favorites));
 }
-
-if(!currentWallpaper){
-return;
-}
-
-let categoryFavorites =
-JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
-
-if(currentWallpaper.startsWith("w")){
-
-let index=parseInt(currentWallpaper.substring(1))-1;
-
-if(favorites.includes(index)){
-favorites=favorites.filter(x=>x!==index);
-}else{
-favorites.push(index);
-}
-
-localStorage.setItem(
-"wallnestFavorites",
-JSON.stringify(favorites)
-);
-
-}else{
-
-if(categoryFavorites.includes(currentWallpaper)){
-categoryFavorites=categoryFavorites.filter(x=>x!==currentWallpaper);
-}else{
-categoryFavorites.push(currentWallpaper);
-}
-
-localStorage.setItem(
-"wallnestCategoryFavorites",
-JSON.stringify(categoryFavorites)
-);
-
-}
-
-renderFavorites();
-
-}
 try{
 favorites=JSON.parse(localStorage.getItem("wallnestFavorites")) || [];
 }catch(e){
 favorites=[];
-}
-
-function favoritePreview(){
-
-if(!currentWallpaper){
-return;
-}
-
-let categoryFavorites =
-JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
-
-if(currentWallpaper.startsWith("w")){
-
-let index=parseInt(currentWallpaper.substring(1))-1;
-
-if(favorites.includes(index)){
-favorites=favorites.filter(x=>x!==index);
-}else{
-favorites.push(index);
-}
-
-localStorage.setItem(
-"wallnestFavorites",
-JSON.stringify(favorites)
-);
-
-}else{
-
-if(categoryFavorites.includes(currentWallpaper)){
-categoryFavorites=categoryFavorites.filter(x=>x!==currentWallpaper);
-}else{
-categoryFavorites.push(currentWallpaper);
-}
-
-localStorage.setItem(
-"wallnestCategoryFavorites",
-JSON.stringify(categoryFavorites)
-);
-
-}
-
-renderFavorites();
-
 }
 function renderFavorites(){
 
