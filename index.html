@@ -10,7 +10,7 @@
 
 body{
 background:#08080d;
-color:#fff;p
+color:#fff;
 font-family:Arial,sans-serif;
 }
 
@@ -1126,27 +1126,27 @@ No favorite wallpapers yet ❤️
 </div>
 <div class="bottom-nav">
 
-<div class="nav-item active" onclick="goHome()">
+<div class="nav-item active" data-nav="home" onclick="goHome()">
 <div class="nav-icon">⌂</div>
 Home
 </div>
 
-<div class="nav-item" onclick="openCategory('cars')">
+<div class="nav-item" data-nav="cars" onclick="openCategory('cars')">
 <div class="nav-icon">🚗</div>
 Cars
 </div>
 
-<div class="nav-item" onclick="openCategory('anime')">
+<div class="nav-item" data-nav="anime" onclick="openCategory('anime')">
 <div class="nav-icon">🎌</div>
 Anime
 </div>
 
-<div class="nav-item" onclick="openFavorites()">
+<div class="nav-item" data-nav="favorites" onclick="openFavorites()">
 <div class="nav-icon">❤️</div>
 Favorites
 </div>
 
-<div class="nav-item" onclick="premiumMessage()">
+<div class="nav-item" data-nav="premium" onclick="premiumMessage()">
 <div class="nav-icon">👑</div>
 Premium
 </div>
@@ -1246,80 +1246,98 @@ heart.innerHTML = "🔒";
 });
 
 }
+/* NAVIGATION */
+
+function hideAllPages(){
+const pages=[
+"homePage",
+"carsPage",
+"animePage",
+"premiumPage",
+"favoritesPage",
+"allWallpapersPage",
+"allCategoriesPage"
+];
+
+pages.forEach(id=>{
+const page=document.getElementById(id);
+if(page){ page.classList.remove("active"); }
+});
+}
+
+function setActiveNav(label){
+const items=document.querySelectorAll(".bottom-nav .nav-item");
+items.forEach(item=>item.classList.remove("active"));
+
+items.forEach(item=>{
+if(item.dataset.nav===label){
+item.classList.add("active");
+}
+});
+}
+
+function showPage(id,navLabel=""){
+hideAllPages();
+const page=document.getElementById(id);
+if(page){ page.classList.add("active"); }
+
+if(navLabel){
+setActiveNav(navLabel);
+}
+
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
 /* CATEGORY */
 
 function openCategory(category){
-
-document.getElementById("homePage").classList.remove("active");
-document.getElementById("carsPage").classList.remove("active");
-document.getElementById("animePage").classList.remove("active");
-document.getElementById("premiumPage").classList.remove("active");
-document.getElementById("favoritesPage").classList.remove("active");
-
 if(category==="cars"){
-document.getElementById("carsPage").classList.add("active");
+showPage("carsPage","cars");
+return;
 }
 
 if(category==="anime"){
-document.getElementById("animePage").classList.add("active");
+showPage("animePage","anime");
+return;
 }
 
-window.scrollTo(0,0);
-
+showPage("homePage","home");
 }
-
 
 /* HOME */
 
 function goHome(){
-
-document.getElementById("carsPage").classList.remove("active");
-document.getElementById("animePage").classList.remove("active");
-document.getElementById("premiumPage").classList.remove("active");
-document.getElementById("favoritesPage").classList.remove("active");
-document.getElementById("homePage").classList.add("active");
-
-window.scrollTo(0,0);
-
+showPage("homePage","home");
 }
+
 function openFavorites(){
-
-document.getElementById("homePage").classList.remove("active");
-document.getElementById("carsPage").classList.remove("active");
-document.getElementById("animePage").classList.remove("active");
-document.getElementById("premiumPage").classList.remove("active");
-document.getElementById("favoritesPage").classList.remove("active");
-
-document.getElementById("favoritesPage").classList.add("active");
-
+showPage("favoritesPage","favorites");
 renderFavorites();
-
-window.scrollTo(0,0);
-
 }
 
 /* PREVIEW */
 
 function openPreview(index){
-
 const keys=["w1","w2","w3","w4"];
-
 const key=keys[index];
 
+if(!key){
+return;
+}
+
 if(premiumWallpapers.includes(key) && !isPremium){
 premiumMessage();
 return;
 }
 
 currentWallpaper=key;
-
 showPreview(key);
-
 }
-
-
 
 function openCategoryPreview(key){
+if(!wallpapers[key]){
+return;
+}
 
 if(premiumWallpapers.includes(key) && !isPremium){
 premiumMessage();
@@ -1327,38 +1345,31 @@ return;
 }
 
 currentWallpaper=key;
-
 showPreview(key);
-
 }
-
 
 function showPreview(key){
-
 const preview=document.getElementById("preview");
-
 const image=document.getElementById("previewImage");
 
-image.style.backgroundImage=
-"url('"+wallpapers[key]+"')";
-
-preview.classList.add("show");
-
+if(!preview || !image || !wallpapers[key]){
+return;
 }
 
-
-/* CLOSE */
+image.style.backgroundImage="url('"+wallpapers[key]+"')";
+preview.classList.add("show");
+}
 
 function closePreview(){
-
 document.getElementById("preview").classList.remove("show");
-
 }
-
 
 /* DOWNLOAD */
 
 function downloadWallpaper(){
+if(!currentWallpaper || !wallpapers[currentWallpaper]){
+return;
+}
 
 if(premiumWallpapers.includes(currentWallpaper) && !isPremium){
 premiumMessage();
@@ -1366,97 +1377,42 @@ return;
 }
 
 const link=document.createElement("a");
-
 link.href=wallpapers[currentWallpaper];
-
 link.target="_blank";
-
 link.download="wallnest-wallpaper.jpg";
-
 link.click();
-
 }
 
-/* FAVORITE */
+/* FAVORITES */
 
 function favorite(event,index){
-
 event.stopPropagation();
 
+const heart=document.getElementById("heart"+index);
+
 if(favorites.includes(index)){
-
 favorites=favorites.filter(x=>x!==index);
-
-document.getElementById("heart"+index).innerHTML="♡";
-
+if(heart){ heart.innerHTML="♡"; }
 }else{
-
 favorites.push(index);
-
-document.getElementById("heart"+index).innerHTML="♥";
-
+if(heart){ heart.innerHTML="♥"; }
 }
+
 localStorage.setItem("wallnestFavorites",JSON.stringify(favorites));
-}
-
-if(!currentWallpaper){
-return;
-}
-
-let categoryFavorites =
-JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
-
-if(currentWallpaper.startsWith("w")){
-
-let index=parseInt(currentWallpaper.substring(1))-1;
-
-if(favorites.includes(index)){
-favorites=favorites.filter(x=>x!==index);
-}else{
-favorites.push(index);
-}
-
-localStorage.setItem(
-"wallnestFavorites",
-JSON.stringify(favorites)
-);
-
-}else{
-
-if(categoryFavorites.includes(currentWallpaper)){
-categoryFavorites=categoryFavorites.filter(x=>x!==currentWallpaper);
-}else{
-categoryFavorites.push(currentWallpaper);
-}
-
-localStorage.setItem(
-"wallnestCategoryFavorites",
-JSON.stringify(categoryFavorites)
-);
-
-}
-
 renderFavorites();
-
-}
-try{
-favorites=JSON.parse(localStorage.getItem("wallnestFavorites")) || [];
-}catch(e){
-favorites=[];
 }
 
 function favoritePreview(){
-
 if(!currentWallpaper){
 return;
 }
 
-let categoryFavorites =
-JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
+let categoryFavorites=JSON.parse(
+localStorage.getItem("wallnestCategoryFavorites")
+) || [];
 
 if(currentWallpaper.startsWith("w")){
-
-let index=parseInt(currentWallpaper.substring(1))-1;
+const index=parseInt(currentWallpaper.substring(1),10)-1;
 
 if(favorites.includes(index)){
 favorites=favorites.filter(x=>x!==index);
@@ -1468,11 +1424,11 @@ localStorage.setItem(
 "wallnestFavorites",
 JSON.stringify(favorites)
 );
-
 }else{
-
 if(categoryFavorites.includes(currentWallpaper)){
-categoryFavorites=categoryFavorites.filter(x=>x!==currentWallpaper);
+categoryFavorites=categoryFavorites.filter(
+x=>x!==currentWallpaper
+);
 }else{
 categoryFavorites.push(currentWallpaper);
 }
@@ -1481,116 +1437,138 @@ localStorage.setItem(
 "wallnestCategoryFavorites",
 JSON.stringify(categoryFavorites)
 );
-
 }
 
 renderFavorites();
-
+updateFavoriteHearts();
 }
-function renderFavorites(){
 
+function favoriteCategory(event,key){
+event.stopPropagation();
+
+let categoryFavorites=JSON.parse(
+localStorage.getItem("wallnestCategoryFavorites")
+) || [];
+
+if(categoryFavorites.includes(key)){
+categoryFavorites=categoryFavorites.filter(x=>x!==key);
+event.currentTarget.innerHTML="♡";
+}else{
+categoryFavorites.push(key);
+event.currentTarget.innerHTML="♥";
+}
+
+localStorage.setItem(
+"wallnestCategoryFavorites",
+JSON.stringify(categoryFavorites)
+);
+
+renderFavorites();
+}
+
+function updateFavoriteHearts(){
+const homeFavorites=JSON.parse(
+localStorage.getItem("wallnestFavorites")
+) || [];
+
+homeFavorites.forEach(index=>{
+const heart=document.getElementById("heart"+index);
+if(heart){ heart.innerHTML="♥"; }
+});
+
+const categoryFavorites=JSON.parse(
+localStorage.getItem("wallnestCategoryFavorites")
+) || [];
+
+categoryFavorites.forEach(key=>{
+const hearts=document.querySelectorAll(".heart");
+hearts.forEach(heart=>{
+const onclick=heart.getAttribute("onclick") || "";
+if(onclick.includes("'"+key+"'")){
+heart.innerHTML="♥";
+}
+});
+});
+}
+
+function loadFavorites(){
+try{
+favorites=JSON.parse(
+localStorage.getItem("wallnestFavorites")
+) || [];
+}catch(e){
+favorites=[];
+}
+}
+
+function renderFavorites(){
 const list=document.getElementById("favoritesList");
 
 if(!list){
 return;
 }
 
-let categoryFavorites =
-JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
+const categoryFavorites=JSON.parse(
+localStorage.getItem("wallnestCategoryFavorites")
+) || [];
 
-let allFavorites = [];
+const allFavorites=[];
 
 favorites.forEach(index=>{
-allFavorites.push(["w"+(index+1)]);
+allFavorites.push("w"+(index+1));
 });
 
 categoryFavorites.forEach(key=>{
-allFavorites.push([key]);
+if(!allFavorites.includes(key)){
+allFavorites.push(key);
+}
 });
 
 if(allFavorites.length===0){
-
-list.innerHTML=
-'<p style="color:#aaa;text-align:center;width:100%;padding:30px;">No favorite wallpapers yet ❤️</p>';
-
+list.innerHTML='<p style="color:#aaa;text-align:center;width:100%;padding:30px;">No favorite wallpapers yet ❤️</p>';
 return;
 }
 
 list.innerHTML="";
 
-allFavorites.forEach(item=>{
-
-const key=item[0];
-
+allFavorites.forEach(key=>{
 if(!wallpapers[key]){
 return;
 }
 
 const card=document.createElement("div");
-
 card.className="wallpaper";
-
-card.style.backgroundImage=
-"url('"+wallpapers[key]+"')";
-
+card.style.backgroundImage="url('"+wallpapers[key]+"')";
 card.style.backgroundSize="cover";
-
 card.style.backgroundPosition="center";
 
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="♥";
+heart.onclick=function(event){
+ event.stopPropagation();
+ if(key.startsWith("w")){
+  const index=parseInt(key.substring(1),10)-1;
+  favorite(event,index);
+ }else{
+  favoriteCategory(event,key);
+ }
+};
+
+card.appendChild(heart);
 card.onclick=function(){
-
 openCategoryPreview(key);
-
 };
 
 list.appendChild(card);
-
 });
-
-}
-/* CATEGORY FAVORITE */
-
-function favoriteCategory(event,key){
-
-event.stopPropagation();
-
-let categoryFavorites =
-JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
-
-if(categoryFavorites.includes(key)){
-
-categoryFavorites =
-categoryFavorites.filter(x => x !== key);
-
-event.currentTarget.innerHTML="♡";
-
-}else{
-
-categoryFavorites.push(key);
-
-event.currentTarget.innerHTML="♥";
-
 }
 
-localStorage.setItem(
-"wallnestCategoryFavorites",
-JSON.stringify(categoryFavorites)
-);
+/* SEARCH - ONE SINGLE SEARCH HANDLER */
 
-   }
-/* SEARCH */
+const searchInput=document.getElementById("searchInput");
 
-document
-.getElementById("searchInput")
-.addEventListener("input",function(){
-
-const search=this.value.toLowerCase().trim();
-
-const cards=document.querySelectorAll(
-"#homePage .wallpaper, #carsPage .wallpaper, #animePage .wallpaper"
-);
-
-const names={
+const wallpaperSearchNames={
 w1:"sports car car",
 w2:"night sky nature",
 w3:"nature landscape",
@@ -1599,217 +1577,18 @@ c1:"sports car",
 c2:"luxury car",
 c3:"classic car",
 c4:"sedan car",
-a1:"anime",
-a2:"anime",
-a3:"anime",
-a4:"anime"
+a1:"anime manga",
+a2:"anime manga",
+a3:"anime manga",
+a4:"anime manga"
 };
 
-let foundCars=false;
-let foundAnime=false;
-
-cards.forEach(card=>{
-
-let key="";
-
-Object.keys(names).forEach(name=>{
-
-if(card.classList.contains(name)){
-key=name;
-}
-
-});
-
-if(!search){
-
-card.style.display="";
-
-}else if(names[key] && names[key].includes(search)){
-
-card.style.display="";
-
-if(key.startsWith("c")){
-foundCars=true;
-}
-
-if(key.startsWith("a")){
-foundAnime=true;
-}
-
-}else{
-
-card.style.display="none";
-
-}
-
-});
-
-if(search.includes("car")){
-
-document.getElementById("homePage").classList.remove("active");
-document.getElementById("animePage").classList.remove("active");
-document.getElementById("premiumPage").classList.remove("active");
-document.getElementById("carsPage").classList.add("active");
-
-}
-
-if(search.includes("anime")){
-
-document.getElementById("homePage").classList.remove("active");
-document.getElementById("carsPage").classList.remove("active");
-document.getElementById("premiumPage").classList.remove("active");
-document.getElementById("animePage").classList.add("active");
-
-}
-
-});
-
-
-/* PREMIUM */
-
-function premiumMessage(){
-
-document.getElementById("homePage").classList.remove("active");
-document.getElementById("carsPage").classList.remove("active");
-document.getElementById("animePage").classList.remove("active");
- 
-document.getElementById("premiumPage").classList.add("active");
-
-window.scrollTo(0,0);
-
-}
-
-function openPremiumPopup(){
-document.getElementById("premiumPopup").classList.add("show");
-}
-
-function closePremiumPopup(){
-document.getElementById("premiumPopup").classList.remove("show");
-}
-
-  
-function startPremium(){
-
-closePremiumPopup();
-
-alert("👑 Wall Nest Premium\n\n💎 1 Month — ₹49\n🔥 6 Months — ₹199\n👑 1 Year — ₹299\n\n✨ Unlock all premium wallpapers!");
-  }
-function selectPremiumPlan(plan){
-
-closePremiumPopup();
-
-document.getElementById("paymentPlan").innerHTML = plan;
-
-document.getElementById("paymentPopup").classList.add("show");
-
-}
-
-function closePaymentPopup(){
-
-document.getElementById("paymentPopup").classList.remove("show");
-
-}
-
-
-function continuePayment(){
-
-closePaymentPopup();
-
-isPremium = true;
-localStorage.setItem("wallnestPremium", "true");
-updatePremiumUI();
-
-showPremiumSuccess();
-
-}
-function showPremiumSuccess(){
-document.getElementById("premiumSuccess").classList.add("show");
-}
-
-function closePremiumSuccess(){
-document.getElementById("premiumSuccess").classList.remove("show");
-  }
-  
-/* PREMIUM LOCK */
-
-function premiumLocked(){
-
-if(isPremium){
-return;
-}
-
-openPremiumPopup();
-}
-
-/* EXPLORE */
-
-function scrollToFeatured(){
-
-document.getElementById("featured").scrollIntoView({
-behavior:"smooth"
-});
-
-}
-/* SHOW ALL WALLPAPERS */
-
-function showAllWallpapers(){
-
-document.getElementById("homePage").classList.remove("active");
-document.getElementById("carsPage").classList.remove("active");
-document.getElementById("animePage").classList.remove("active");
-document.getElementById("premiumPage").classList.remove("active");
-document.getElementById("favoritesPage").classList.remove("active");
-document.getElementById("allWallpapersPage").classList.add("active");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-/* SHOW ALL CATEGORIES */
-
-function showAllCategories(){
-
-document.getElementById("homePage").classList.remove("active");
-document.getElementById("carsPage").classList.remove("active");
-document.getElementById("animePage").classList.remove("active");
-document.getElementById("premiumPage").classList.remove("active");
-document.getElementById("favoritesPage").classList.remove("active");
-document.getElementById("allWallpapersPage").classList.remove("active");
-
-document.getElementById("allCategoriesPage").classList.add("active");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-/* SEARCH */
-
-const searchInput = document.getElementById("searchInput");
-
-searchInput.addEventListener("input", function(){
-
-const query = this.value.toLowerCase().trim();
-
-if(query === ""){
+if(searchInput){
+searchInput.addEventListener("input",function(){
+const query=this.value.toLowerCase().trim();
+
+if(query===""){
 goHome();
-return;
-}
-
-if(
-query.includes("car") ||
-query.includes("cars") ||
-query.includes("vehicle") ||
-query.includes("bmw") ||
-query.includes("audi") ||
-query.includes("mercedes") ||
-query.includes("supercar") ||
-query.includes("sports car")
-){
-openCategory("cars");
 return;
 }
 
@@ -1823,70 +1602,147 @@ openCategory("anime");
 return;
 }
 
+if(
+query.includes("car") ||
+query.includes("vehicle") ||
+query.includes("bmw") ||
+query.includes("audi") ||
+query.includes("mercedes") ||
+query.includes("supercar") ||
+query.includes("sports car")
+){
+openCategory("cars");
+return;
+}
+
 if(query.includes("premium") || query.includes("pro")){
 premiumMessage();
 return;
 }
 
-const featured = document.querySelectorAll("#featured .wallpaper");
-let found = false;
+showPage("homePage","home");
 
-featured.forEach(card => {
+const cards=document.querySelectorAll("#featured .wallpaper");
+let found=false;
 
-const isFree = card.querySelector(".free");
-const isPremium = card.querySelector(".premium");
+cards.forEach(card=>{
+let key="";
 
-let match = false;
-
-if(query.includes("free") && isFree){
-match = true;
+Object.keys(wallpaperSearchNames).forEach(name=>{
+if(card.classList.contains(name)){
+key=name;
 }
+});
 
-if(query.includes("wallpaper")){
-match = true;
-}
+const match=wallpaperSearchNames[key] &&
+wallpaperSearchNames[key].includes(query);
 
-card.style.display = match ? "" : "none";
+card.style.display=match ? "" : "none";
 
 if(match){
-found = true;
+found=true;
 }
-
 });
+
+let message=document.getElementById("noSearchResults");
 
 if(!found){
-
-featured.forEach(card => {
-card.style.display = "none";
-});
-
-if(!document.getElementById("noSearchResults")){
-
-const message = document.createElement("p");
-
-message.id = "noSearchResults";
-message.innerHTML = "🔍 No wallpapers found";
-
-message.style.textAlign = "center";
-message.style.color = "#999";
-message.style.padding = "25px 0";
-message.style.fontSize = "15px";
-
+if(!message){
+message=document.createElement("p");
+message.id="noSearchResults";
+message.style.textAlign="center";
+message.style.color="#999";
+message.style.padding="25px 0";
+message.style.fontSize="15px";
+message.innerHTML="🔍 No wallpapers found";
 document.getElementById("featured").appendChild(message);
-
 }
-
-}else{
-
-const oldMessage = document.getElementById("noSearchResults");
-
-if(oldMessage){
-oldMessage.remove();
+}else if(message){
+message.remove();
 }
-
-}
-
 });
+}
+
+/* PREMIUM */
+
+function premiumMessage(){
+showPage("premiumPage","premium");
+}
+
+function openPremiumPopup(){
+document.getElementById("premiumPopup").classList.add("show");
+}
+
+function closePremiumPopup(){
+document.getElementById("premiumPopup").classList.remove("show");
+}
+
+function startPremium(){
+closePremiumPopup();
+openPremiumPopup();
+}
+
+function selectPremiumPlan(plan){
+closePremiumPopup();
+document.getElementById("paymentPlan").innerHTML=plan;
+document.getElementById("paymentPopup").classList.add("show");
+}
+
+function closePaymentPopup(){
+document.getElementById("paymentPopup").classList.remove("show");
+}
+
+function continuePayment(){
+closePaymentPopup();
+isPremium=true;
+localStorage.setItem("wallnestPremium","true");
+updatePremiumUI();
+showPremiumSuccess();
+}
+
+function showPremiumSuccess(){
+document.getElementById("premiumSuccess").classList.add("show");
+}
+
+function closePremiumSuccess(){
+document.getElementById("premiumSuccess").classList.remove("show");
+}
+
+function premiumLocked(){
+if(isPremium){
+return;
+}
+openPremiumPopup();
+}
+
+/* EXPLORE */
+
+function scrollToFeatured(){
+showPage("homePage","home");
+const featured=document.getElementById("featured");
+if(featured){
+featured.scrollIntoView({behavior:"smooth"});
+}
+}
+
+/* SHOW ALL WALLPAPERS */
+
+function showAllWallpapers(){
+showPage("allWallpapersPage","");
+}
+
+/* SHOW ALL CATEGORIES */
+
+function showAllCategories(){
+showPage("allCategoriesPage","");
+}
+
+/* STARTUP */
+
+loadFavorites();
+updatePremiumUI();
+updateFavoriteHearts();
+setActiveNav("home");
 </script>
 <div class="creator-credit">
 Created by <strong>Muttaqi Abbas</strong> ❤️
