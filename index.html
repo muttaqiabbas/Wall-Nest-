@@ -264,11 +264,11 @@ margin-bottom:4px;
 }
 
 .page{
-display:none;
+display:none !important;
 }
 
 .page.active{
-display:block;
+display:block !important;
 }
 
 .page-header{
@@ -1277,31 +1277,22 @@ item.classList.add("active");
 }
 
 function showPage(id,navLabel=""){
-const pages=document.querySelectorAll(".page");
-pages.forEach(page=>{
-page.classList.remove("active");
-page.style.display="none";
-});
-
 const page=document.getElementById(id);
+
 if(!page){
 const home=document.getElementById("homePage");
-if(home){
-home.classList.add("active");
-home.style.display="block";
-}
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+if(home){home.classList.add("active");}
 setActiveNav("home");
 return;
 }
 
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 page.classList.add("active");
-page.style.display="block";
 
-if(navLabel){
-setActiveNav(navLabel);
-}
+if(navLabel){setActiveNav(navLabel);}
 
-window.scrollTo(0,0);
+window.scrollTo({top:0,behavior:"instant"});
 }
 
 /* CATEGORY */
