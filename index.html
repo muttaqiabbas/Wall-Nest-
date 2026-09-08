@@ -1277,15 +1277,31 @@ item.classList.add("active");
 }
 
 function showPage(id,navLabel=""){
-hideAllPages();
+const pages=document.querySelectorAll(".page");
+pages.forEach(page=>{
+page.classList.remove("active");
+page.style.display="none";
+});
+
 const page=document.getElementById(id);
-if(page){ page.classList.add("active"); }
+if(!page){
+const home=document.getElementById("homePage");
+if(home){
+home.classList.add("active");
+home.style.display="block";
+}
+setActiveNav("home");
+return;
+}
+
+page.classList.add("active");
+page.style.display="block";
 
 if(navLabel){
 setActiveNav(navLabel);
 }
 
-window.scrollTo({top:0,behavior:"smooth"});
+window.scrollTo(0,0);
 }
 
 /* CATEGORY */
