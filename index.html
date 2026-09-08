@@ -10,7 +10,7 @@
 
 body{
 background:#08080d;
-color:#fff;
+color:#fff;p
 font-family:Arial,sans-serif;
 }
 
@@ -146,6 +146,16 @@ overflow:hidden;
 background-size:cover;
 background-position:center;
 cursor:pointer;
+transition:transform 0.2s ease,box-shadow 0.2s ease;
+}
+
+.wallpaper:active{
+transform:scale(0.97);
+}
+
+.wallpaper:hover{
+transform:translateY(-3px);
+box-shadow:0 8px 25px #0008;
 }
 
 .w1{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=90")}
@@ -167,12 +177,14 @@ cursor:pointer;
 position:absolute;
 top:10px;
 left:10px;
-padding:6px 9px;
-border-radius:7px;
+padding:6px 10px;
+border-radius:8px;
 font-size:10px;
 font-weight:bold;
+letter-spacing:0.5px;
+box-shadow:0 4px 12px #0006;
+backdrop-filter:blur(4px);
 }
-
 .free{
 background:#7438ff;
 }
@@ -196,6 +208,12 @@ align-items:center;
 font-size:21px;
 z-index:2;
 cursor:pointer;
+transition:transform 0.2s ease,background 0.2s ease;
+}
+
+.heart:active{
+transform:scale(0.82);
+background:#8d3cff;
 }
 
 .premium-box{
@@ -567,6 +585,17 @@ appearance:none;
 box-shadow:0 6px 18px #8d3cff55;
 cursor:pointer;
 }
+.creator-credit{
+text-align:center;
+color:#888;
+font-size:13px;
+padding:18px 0 85px;
+}
+
+.creator-credit strong{
+color:#9b4dff;
+font-weight:600;
+}
 </style>
 </head>
 
@@ -600,7 +629,7 @@ cursor:pointer;
 
 <div class="section-title">
 <h2>Categories</h2>
-<span>See All ›</span>
+<span onclick="showAllCategories()">See All ›</span>
 </div>
 
 <div class="categories">
@@ -620,7 +649,7 @@ cursor:pointer;
 
 <div class="section-title">
 <h2>Featured Wallpapers</h2>
-<span>See All ›</span>
+<span onclick="showAllWallpapers()">See All ›</span>
 </div>
 
 <div class="wallpapers">
@@ -628,6 +657,9 @@ cursor:pointer;
 <div class="wallpaper w1" onclick="openPreview(0)">
 <div class="badge free">FREE</div>
 <div class="heart" onclick="favorite(event,0)" id="heart0">♡</div>
+<div class="wallpaper-info">
+<div class="wallpaper-name">Sports Car</div>
+<div class="wallpaper-category">Cars</div>
 </div>
 
 <div class="wallpaper w2" onclick="openPreview(1)">
@@ -686,22 +718,22 @@ Explore Premium
 
 <div class="wallpaper c1" onclick="openCategoryPreview('c1')">
 <div class="badge free">FREE</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'c1')">♡</div>
 </div>
 
 <div class="wallpaper c2" onclick="openCategoryPreview('c2')">
 <div class="badge premium">PREMIUM</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'c2')">♡</div>
 </div>
 
 <div class="wallpaper c3" onclick="openCategoryPreview('c3')">
 <div class="badge free">FREE</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'c3')">♡</div>
 </div>
 
 <div class="wallpaper c4" onclick="openCategoryPreview('c4')">
 <div class="badge premium">PREMIUM</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'c4')">♡</div>
 </div>
 
 </div>
@@ -726,25 +758,25 @@ Explore Premium
 </div>
 
 <div class="wallpapers">
-
 <div class="wallpaper a1" onclick="openCategoryPreview('a1')">
+
 <div class="badge free">FREE</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'a1')">♡</div>
 </div>
 
 <div class="wallpaper a2" onclick="openCategoryPreview('a2')">
 <div class="badge premium">PREMIUM</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'a2')">♡</div>
 </div>
 
 <div class="wallpaper a3" onclick="openCategoryPreview('a3')">
 <div class="badge free">FREE</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'a3')">♡</div>
 </div>
 
 <div class="wallpaper a4" onclick="openCategoryPreview('a4')">
 <div class="badge premium">PREMIUM</div>
-<div class="heart">♡</div>
+<div class="heart" onclick="favoriteCategory(event,'a4')">♡</div>
 </div>
 
 </div>
@@ -968,7 +1000,106 @@ Cancel
 </div>
 
 </div>
+<!-- ALL WALLPAPERS PAGE -->
 
+<div id="allWallpapersPage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>🖼️ All Wallpapers</h1>
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>All Wallpapers</h2>
+<span>12 Wallpapers</span>
+</div>
+
+<div class="wallpapers">
+
+<div class="wallpaper w1" onclick="openCategoryPreview('w1')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper w2" onclick="openCategoryPreview('w2')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+<div class="wallpaper w3" onclick="openCategoryPreview('w3')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+<div class="wallpaper w4" onclick="openCategoryPreview('w4')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper c1" onclick="openCategoryPreview('c1')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper c2" onclick="openCategoryPreview('c2')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+<div class="wallpaper c3" onclick="openCategoryPreview('c3')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper c4" onclick="openCategoryPreview('c4')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+<div class="wallpaper a1" onclick="openCategoryPreview('a1')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper a2" onclick="openCategoryPreview('a2')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+<div class="wallpaper a3" onclick="openCategoryPreview('a3')">
+<div class="badge free">FREE</div>
+</div>
+
+<div class="wallpaper a4" onclick="openCategoryPreview('a4')">
+<div class="badge premium">PREMIUM</div>
+</div>
+
+</div>
+</div>
+</div>
+<!-- ALL CATEGORIES PAGE -->
+
+<div id="allCategoriesPage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>📂 Categories</h1>
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>Browse Categories</h2>
+<span>2 Categories</span>
+</div>
+
+<div class="categories">
+
+<div class="category cars" onclick="openCategory('cars')">
+🚗 Cars
+</div>
+
+<div class="category anime" onclick="openCategory('anime')">
+🎌 Anime
+</div>
+
+</div>
+
+</div>
+
+</div>
 <!-- FAVORITES PAGE -->
 
 <div id="favoritesPage" class="page">
@@ -1038,7 +1169,9 @@ Premium
 <button class="control download" onclick="downloadWallpaper()">
 ⬇️ Download
 </button>
-
+<button class="control" onclick="favoritePreview()">
+❤️ Favorite
+</button>
 <button class="control close" onclick="closePreview()">
 ✕ Close
 </button>
@@ -1131,4 +1264,635 @@ document.getElementById("carsPage").classList.add("active");
 }
 
 if(category==="anime"){
-document.getElementBy
+document.getElementById("animePage").classList.add("active");
+}
+
+window.scrollTo(0,0);
+
+}
+
+
+/* HOME */
+
+function goHome(){
+
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("favoritesPage").classList.remove("active");
+document.getElementById("homePage").classList.add("active");
+
+window.scrollTo(0,0);
+
+}
+function openFavorites(){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("favoritesPage").classList.remove("active");
+
+document.getElementById("favoritesPage").classList.add("active");
+
+renderFavorites();
+
+window.scrollTo(0,0);
+
+}
+
+/* PREVIEW */
+
+function openPreview(index){
+
+const keys=["w1","w2","w3","w4"];
+
+const key=keys[index];
+
+if(premiumWallpapers.includes(key) && !isPremium){
+premiumMessage();
+return;
+}
+
+currentWallpaper=key;
+
+showPreview(key);
+
+}
+
+
+
+function openCategoryPreview(key){
+
+if(premiumWallpapers.includes(key) && !isPremium){
+premiumMessage();
+return;
+}
+
+currentWallpaper=key;
+
+showPreview(key);
+
+}
+
+
+function showPreview(key){
+
+const preview=document.getElementById("preview");
+
+const image=document.getElementById("previewImage");
+
+image.style.backgroundImage=
+"url('"+wallpapers[key]+"')";
+
+preview.classList.add("show");
+
+}
+
+
+/* CLOSE */
+
+function closePreview(){
+
+document.getElementById("preview").classList.remove("show");
+
+}
+
+
+/* DOWNLOAD */
+
+function downloadWallpaper(){
+
+if(premiumWallpapers.includes(currentWallpaper) && !isPremium){
+premiumMessage();
+return;
+}
+
+const link=document.createElement("a");
+
+link.href=wallpapers[currentWallpaper];
+
+link.target="_blank";
+
+link.download="wallnest-wallpaper.jpg";
+
+link.click();
+
+}
+
+/* FAVORITE */
+
+function favorite(event,index){
+
+event.stopPropagation();
+
+if(favorites.includes(index)){
+
+favorites=favorites.filter(x=>x!==index);
+
+document.getElementById("heart"+index).innerHTML="♡";
+
+}else{
+
+favorites.push(index);
+
+document.getElementById("heart"+index).innerHTML="♥";
+
+}
+localStorage.setItem("wallnestFavorites",JSON.stringify(favorites));
+}
+
+if(!currentWallpaper){
+return;
+}
+
+let categoryFavorites =
+JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
+
+if(currentWallpaper.startsWith("w")){
+
+let index=parseInt(currentWallpaper.substring(1))-1;
+
+if(favorites.includes(index)){
+favorites=favorites.filter(x=>x!==index);
+}else{
+favorites.push(index);
+}
+
+localStorage.setItem(
+"wallnestFavorites",
+JSON.stringify(favorites)
+);
+
+}else{
+
+if(categoryFavorites.includes(currentWallpaper)){
+categoryFavorites=categoryFavorites.filter(x=>x!==currentWallpaper);
+}else{
+categoryFavorites.push(currentWallpaper);
+}
+
+localStorage.setItem(
+"wallnestCategoryFavorites",
+JSON.stringify(categoryFavorites)
+);
+
+}
+
+renderFavorites();
+
+}
+try{
+favorites=JSON.parse(localStorage.getItem("wallnestFavorites")) || [];
+}catch(e){
+favorites=[];
+}
+
+function favoritePreview(){
+
+if(!currentWallpaper){
+return;
+}
+
+let categoryFavorites =
+JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
+
+if(currentWallpaper.startsWith("w")){
+
+let index=parseInt(currentWallpaper.substring(1))-1;
+
+if(favorites.includes(index)){
+favorites=favorites.filter(x=>x!==index);
+}else{
+favorites.push(index);
+}
+
+localStorage.setItem(
+"wallnestFavorites",
+JSON.stringify(favorites)
+);
+
+}else{
+
+if(categoryFavorites.includes(currentWallpaper)){
+categoryFavorites=categoryFavorites.filter(x=>x!==currentWallpaper);
+}else{
+categoryFavorites.push(currentWallpaper);
+}
+
+localStorage.setItem(
+"wallnestCategoryFavorites",
+JSON.stringify(categoryFavorites)
+);
+
+}
+
+renderFavorites();
+
+}
+function renderFavorites(){
+
+const list=document.getElementById("favoritesList");
+
+if(!list){
+return;
+}
+
+let categoryFavorites =
+JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
+
+let allFavorites = [];
+
+favorites.forEach(index=>{
+allFavorites.push(["w"+(index+1)]);
+});
+
+categoryFavorites.forEach(key=>{
+allFavorites.push([key]);
+});
+
+if(allFavorites.length===0){
+
+list.innerHTML=
+'<p style="color:#aaa;text-align:center;width:100%;padding:30px;">No favorite wallpapers yet ❤️</p>';
+
+return;
+}
+
+list.innerHTML="";
+
+allFavorites.forEach(item=>{
+
+const key=item[0];
+
+if(!wallpapers[key]){
+return;
+}
+
+const card=document.createElement("div");
+
+card.className="wallpaper";
+
+card.style.backgroundImage=
+"url('"+wallpapers[key]+"')";
+
+card.style.backgroundSize="cover";
+
+card.style.backgroundPosition="center";
+
+card.onclick=function(){
+
+openCategoryPreview(key);
+
+};
+
+list.appendChild(card);
+
+});
+
+}
+/* CATEGORY FAVORITE */
+
+function favoriteCategory(event,key){
+
+event.stopPropagation();
+
+let categoryFavorites =
+JSON.parse(localStorage.getItem("wallnestCategoryFavorites")) || [];
+
+if(categoryFavorites.includes(key)){
+
+categoryFavorites =
+categoryFavorites.filter(x => x !== key);
+
+event.currentTarget.innerHTML="♡";
+
+}else{
+
+categoryFavorites.push(key);
+
+event.currentTarget.innerHTML="♥";
+
+}
+
+localStorage.setItem(
+"wallnestCategoryFavorites",
+JSON.stringify(categoryFavorites)
+);
+
+   }
+/* SEARCH */
+
+document
+.getElementById("searchInput")
+.addEventListener("input",function(){
+
+const search=this.value.toLowerCase().trim();
+
+const cards=document.querySelectorAll(
+"#homePage .wallpaper, #carsPage .wallpaper, #animePage .wallpaper"
+);
+
+const names={
+w1:"sports car car",
+w2:"night sky nature",
+w3:"nature landscape",
+w4:"luxury car",
+c1:"sports car",
+c2:"luxury car",
+c3:"classic car",
+c4:"sedan car",
+a1:"anime",
+a2:"anime",
+a3:"anime",
+a4:"anime"
+};
+
+let foundCars=false;
+let foundAnime=false;
+
+cards.forEach(card=>{
+
+let key="";
+
+Object.keys(names).forEach(name=>{
+
+if(card.classList.contains(name)){
+key=name;
+}
+
+});
+
+if(!search){
+
+card.style.display="";
+
+}else if(names[key] && names[key].includes(search)){
+
+card.style.display="";
+
+if(key.startsWith("c")){
+foundCars=true;
+}
+
+if(key.startsWith("a")){
+foundAnime=true;
+}
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+if(search.includes("car")){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("carsPage").classList.add("active");
+
+}
+
+if(search.includes("anime")){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("animePage").classList.add("active");
+
+}
+
+});
+
+
+/* PREMIUM */
+
+function premiumMessage(){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+ 
+document.getElementById("premiumPage").classList.add("active");
+
+window.scrollTo(0,0);
+
+}
+
+function openPremiumPopup(){
+document.getElementById("premiumPopup").classList.add("show");
+}
+
+function closePremiumPopup(){
+document.getElementById("premiumPopup").classList.remove("show");
+}
+
+  
+function startPremium(){
+
+closePremiumPopup();
+
+alert("👑 Wall Nest Premium\n\n💎 1 Month — ₹49\n🔥 6 Months — ₹199\n👑 1 Year — ₹299\n\n✨ Unlock all premium wallpapers!");
+  }
+function selectPremiumPlan(plan){
+
+closePremiumPopup();
+
+document.getElementById("paymentPlan").innerHTML = plan;
+
+document.getElementById("paymentPopup").classList.add("show");
+
+}
+
+function closePaymentPopup(){
+
+document.getElementById("paymentPopup").classList.remove("show");
+
+}
+
+
+function continuePayment(){
+
+closePaymentPopup();
+
+isPremium = true;
+localStorage.setItem("wallnestPremium", "true");
+updatePremiumUI();
+
+showPremiumSuccess();
+
+}
+function showPremiumSuccess(){
+document.getElementById("premiumSuccess").classList.add("show");
+}
+
+function closePremiumSuccess(){
+document.getElementById("premiumSuccess").classList.remove("show");
+  }
+  
+/* PREMIUM LOCK */
+
+function premiumLocked(){
+
+if(isPremium){
+return;
+}
+
+openPremiumPopup();
+}
+
+/* EXPLORE */
+
+function scrollToFeatured(){
+
+document.getElementById("featured").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+/* SHOW ALL WALLPAPERS */
+
+function showAllWallpapers(){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("favoritesPage").classList.remove("active");
+document.getElementById("allWallpapersPage").classList.add("active");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+/* SHOW ALL CATEGORIES */
+
+function showAllCategories(){
+
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("favoritesPage").classList.remove("active");
+document.getElementById("allWallpapersPage").classList.remove("active");
+
+document.getElementById("allCategoriesPage").classList.add("active");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+/* SEARCH */
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", function(){
+
+const query = this.value.toLowerCase().trim();
+
+if(query === ""){
+goHome();
+return;
+}
+
+if(
+query.includes("car") ||
+query.includes("cars") ||
+query.includes("vehicle") ||
+query.includes("bmw") ||
+query.includes("audi") ||
+query.includes("mercedes") ||
+query.includes("supercar") ||
+query.includes("sports car")
+){
+openCategory("cars");
+return;
+}
+
+if(
+query.includes("anime") ||
+query.includes("manga") ||
+query.includes("cartoon") ||
+query.includes("otaku")
+){
+openCategory("anime");
+return;
+}
+
+if(query.includes("premium") || query.includes("pro")){
+premiumMessage();
+return;
+}
+
+const featured = document.querySelectorAll("#featured .wallpaper");
+let found = false;
+
+featured.forEach(card => {
+
+const isFree = card.querySelector(".free");
+const isPremium = card.querySelector(".premium");
+
+let match = false;
+
+if(query.includes("free") && isFree){
+match = true;
+}
+
+if(query.includes("wallpaper")){
+match = true;
+}
+
+card.style.display = match ? "" : "none";
+
+if(match){
+found = true;
+}
+
+});
+
+if(!found){
+
+featured.forEach(card => {
+card.style.display = "none";
+});
+
+if(!document.getElementById("noSearchResults")){
+
+const message = document.createElement("p");
+
+message.id = "noSearchResults";
+message.innerHTML = "🔍 No wallpapers found";
+
+message.style.textAlign = "center";
+message.style.color = "#999";
+message.style.padding = "25px 0";
+message.style.fontSize = "15px";
+
+document.getElementById("featured").appendChild(message);
+
+}
+
+}else{
+
+const oldMessage = document.getElementById("noSearchResults");
+
+if(oldMessage){
+oldMessage.remove();
+}
+
+}
+
+});
+</script>
+<div class="creator-credit">
+Created by <strong>Muttaqi Abbas</strong> ❤️
+</div>
+</body>
+</html>
