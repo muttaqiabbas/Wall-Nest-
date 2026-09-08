@@ -4,184 +4,1131 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Wall Nest</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#08080d;color:#fff;font-family:Arial,sans-serif}
-.app{max-width:500px;margin:auto;min-height:100vh;padding-bottom:90px}
-header{padding:24px 18px 15px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:29px;font-weight:800}.logo span{color:#9b4dff}.crown{font-size:25px}
-.search{margin:0 18px 22px;padding:14px 16px;background:#18181f;border:1px solid #292933;border-radius:15px}
-.search input{width:88%;border:0;outline:0;background:transparent;color:white;font-size:15px}
-.hero{margin:0 18px 28px;height:210px;border-radius:22px;padding:24px;display:flex;align-items:flex-end;background:radial-gradient(circle at 80% 20%,#7438ff,transparent 35%),linear-gradient(135deg,#171126,#30145d,#09090e)}
-.hero h1{font-size:27px;margin-bottom:8px}.hero p{color:#c8b2df;margin-bottom:15px}
-.button{display:inline-block;background:#8d3cff;padding:11px 17px;border-radius:10px;font-weight:bold;cursor:pointer}
-.section{margin:0 18px 28px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.section-title h2{font-size:20px}.section-title span{color:#999;font-size:13px;cursor:pointer}
-.categories{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.category{height:120px;border-radius:16px;padding:15px;display:flex;align-items:flex-end;font-size:18px;font-weight:bold;cursor:pointer}
-.cars{background:radial-gradient(circle at 70% 30%,#ff5555,transparent 30%),linear-gradient(135deg,#401010,#111)}
-.anime{background:radial-gradient(circle at 30% 20%,#5f4cff,transparent 35%),linear-gradient(135deg,#17134a,#09090d)}
-.wallpapers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.wallpaper{height:250px;border-radius:16px;position:relative;overflow:hidden;background-size:cover;background-position:center;cursor:pointer}
-.w1,.c1{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=90")}
+
+body{
+background:#08080d;
+color:#fff;
+font-family:Arial,sans-serif;
+}
+
+.app{
+max-width:500px;
+margin:auto;
+min-height:100vh;
+padding-bottom:90px;
+}
+
+header{
+padding:24px 18px 15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:29px;
+font-weight:800;
+}
+
+.logo span{color:#9b4dff}
+
+.crown{font-size:25px}
+
+.search{
+margin:0 18px 22px;
+padding:14px 16px;
+background:#18181f;
+border:1px solid #292933;
+border-radius:15px;
+}
+
+.search input{
+width:88%;
+border:0;
+outline:0;
+background:transparent;
+color:white;
+font-size:15px;
+}
+
+.hero{
+margin:0 18px 28px;
+height:210px;
+border-radius:22px;
+padding:24px;
+display:flex;
+align-items:flex-end;
+background:
+radial-gradient(circle at 80% 20%,#7438ff,transparent 35%),
+linear-gradient(135deg,#171126,#30145d,#09090e);
+}
+
+.hero h1{
+font-size:27px;
+margin-bottom:8px;
+}
+
+.hero p{
+color:#c8b2df;
+margin-bottom:15px;
+}
+
+.button{
+display:inline-block;
+background:#8d3cff;
+padding:11px 17px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.section{
+margin:0 18px 28px;
+}
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px;
+}
+
+.section-title h2{font-size:20px}
+
+.section-title span{
+color:#999;
+font-size:13px;
+}
+
+.categories{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.category{
+height:120px;
+border-radius:16px;
+padding:15px;
+display:flex;
+align-items:flex-end;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.cars{
+background:
+radial-gradient(circle at 70% 30%,#ff5555,transparent 30%),
+linear-gradient(135deg,#401010,#111);
+}
+
+.anime{
+background:
+radial-gradient(circle at 30% 20%,#5f4cff,transparent 35%),
+linear-gradient(135deg,#17134a,#09090d);
+}
+
+.wallpapers{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.wallpaper{
+height:250px;
+border-radius:16px;
+position:relative;
+overflow:hidden;
+background-size:cover;
+background-position:center;
+cursor:pointer;
+}
+
+.w1{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=90")}
 .w2{background-image:url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=90")}
 .w3{background-image:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=90")}
-.w4,.c2{background-image:url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=90")}
+.w4{background-image:url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=90")}
+
+.c1{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=90")}
+.c2{background-image:url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=90")}
 .c3{background-image:url("https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=700&q=90")}
 .c4{background-image:url("https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=700&q=90")}
+
 .a1{background-image:url("https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=700&q=90")}
 .a2{background-image:url("https://images.unsplash.com/photo-1613376023733-0a73315d9b06?auto=format&fit=crop&w=700&q=90")}
 .a3{background-image:url("https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=700&q=90")}
 .a4{background-image:url("https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=700&q=90")}
-.badge{position:absolute;top:10px;left:10px;padding:6px 10px;border-radius:8px;font-size:10px;font-weight:bold}.free{background:#7438ff}.premium{background:#ffc529;color:#111}
-.heart{position:absolute;top:9px;right:9px;width:36px;height:36px;border-radius:50%;background:#000b;display:flex;justify-content:center;align-items:center;font-size:21px;z-index:2;cursor:pointer}
-.premium-box{margin:0 18px 25px;padding:20px;border-radius:18px;border:1px solid #6330a8;background:linear-gradient(135deg,#24113d,#111119)}
-.premium-box p{color:#aaa;line-height:1.5;font-size:14px;margin-top:8px}.premium-box .button{margin-top:15px}
-.page{display:none}.page.active{display:block}
-.page-header{padding:22px 18px;display:flex;align-items:center;gap:15px}.back{font-size:25px;cursor:pointer}
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(500px,100%);height:70px;background:#15151b;border-top:1px solid #292933;display:flex;justify-content:space-around;align-items:center;z-index:20}
-.nav-item{text-align:center;color:#888;font-size:11px;cursor:pointer}.nav-item.active{color:#9b4dff}.nav-icon{font-size:21px;margin-bottom:4px}
-.preview,.popup{display:none;position:fixed;inset:0;background:#000;z-index:100;align-items:center;justify-content:center;flex-direction:column;padding:15px}.preview.show,.popup.show{display:flex}
-.preview-image{width:100%;max-width:500px;height:75vh;background-size:cover;background-position:center;border-radius:18px}
-.preview-controls{display:flex;gap:8px;margin-top:15px}.control,button{border:0;border-radius:12px;padding:12px 16px;font-weight:bold;cursor:pointer}.download,.primary{background:#8d3cff;color:#fff}.close{background:#292929;color:#fff}
-.popup{background:#000b;z-index:200}.popup-box{width:100%;max-width:380px;padding:25px;border-radius:22px;background:#171722;border:1px solid #8d3cff;text-align:center}.popup-box p{color:#bbb;margin:12px 0 20px}.popup-buttons{display:flex;flex-direction:column;gap:10px}
-.plans{display:flex;flex-direction:column;gap:15px;margin-top:20px}.plan{padding:20px;border-radius:18px;background:#171722;border:1px solid #333;text-align:center}.plan h2{font-size:28px;margin:8px}.plan p{color:#aaa;margin-bottom:15px}
-.creator-credit{text-align:center;color:#888;font-size:13px;padding:18px 0 85px}.creator-credit strong{color:#9b4dff}
-.empty{color:#aaa;text-align:center;grid-column:1/-1;padding:30px}
+
+.badge{
+position:absolute;
+top:10px;
+left:10px;
+padding:6px 9px;
+border-radius:7px;
+font-size:10px;
+font-weight:bold;
+}
+
+.free{
+background:#7438ff;
+}
+
+.premium{
+background:#ffc529;
+color:#111;
+}
+
+.heart{
+position:absolute;
+top:9px;
+right:9px;
+width:36px;
+height:36px;
+border-radius:50%;
+background:#000b;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:21px;
+z-index:2;
+cursor:pointer;
+}
+
+.premium-box{
+margin:0 18px;
+padding:20px;
+border-radius:18px;
+border:1px solid #6330a8;
+background:linear-gradient(135deg,#24113d,#111119);
+}
+
+.premium-box h2{margin-bottom:8px}
+
+.premium-box p{
+color:#aaa;
+line-height:1.5;
+font-size:14px;
+}
+
+.premium-box .button{margin-top:15px}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:min(500px,100%);
+height:70px;
+background:#15151b;
+border-top:1px solid #292933;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:20;
+}
+
+.nav-item{
+text-align:center;
+color:#888;
+font-size:11px;
+cursor:pointer;
+}
+
+.nav-item.active{color:#9b4dff}
+
+.nav-icon{
+font-size:21px;
+margin-bottom:4px;
+}
+
+.page{
+display:none;
+}
+
+.page.active{
+display:block;
+}
+
+.page-header{
+padding:22px 18px;
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.back{
+font-size:25px;
+cursor:pointer;
+}
+
+.page-header h1{
+font-size:25px;
+}
+
+.preview{
+display:none;
+position:fixed;
+inset:0;
+background:#000;
+z-index:100;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+padding:15px;
+}
+
+.preview.show{display:flex}
+
+.preview-image{
+width:100%;
+max-width:500px;
+height:75vh;
+background-size:cover;
+background-position:center;
+border-radius:18px;
+}
+
+.preview-controls{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.control{
+border:0;
+border-radius:12px;
+padding:12px 18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.download{
+background:#8d3cff;
+color:#fff;
+}
+
+.close{
+background:#292929;
+color:#fff;
+}
+  /* PREMIUM POPUP */
+
+.premium-popup{
+display:none;
+position:fixed;
+inset:0;
+background:#0009;
+z-index:200;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.premium-popup.show{
+display:flex;
+}
+
+.premium-popup-box{
+width:100%;
+max-width:380px;
+padding:25px;
+border-radius:22px;
+background:linear-gradient(145deg,#24113d,#111119);
+border:1px solid #8d3cff;
+box-shadow:0 0 40px #8d3cff55;
+text-align:center;
+}
+
+.premium-popup-icon{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.premium-popup-box h2{
+font-size:23px;
+margin-bottom:8px;
+}
+
+.premium-popup-box p{
+color:#bbb;
+font-size:14px;
+line-height:1.5;
+margin-bottom:20px;
+}
+
+.premium-popup-buttons{
+display:flex;
+flex-direction:column;
+gap:10px;
+justify-content:center;
+}
+
+.premium-popup-buttons button{
+border:0;
+padding:11px 16px;
+border-radius:11px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.premium-join{
+background:#8d3cff;
+color:white;
+}
+
+.premium-cancel{
+background:#292929;
+color:#fff;
+}
+  .plans{
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-top:20px;
+}
+
+.plan{
+padding:20px;
+border-radius:18px;
+background:#171722;
+border:1px solid #333;
+text-align:center;
+}
+
+.plan h3{
+margin-bottom:8px;
+}
+
+.plan h2{
+font-size:28px;
+margin:8px 0;
+}
+
+.plan p{
+color:#aaa;
+font-size:13px;
+margin-bottom:15px;
+}
+
+.plan button{
+border:0;
+padding:11px 20px;
+border-radius:12px;
+background:#8d3cff;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+/* PAYMENT CONFIRMATION */
+
+.payment-confirm-box{
+width:100%;
+max-width:380px;
+padding:28px 22px;
+border-radius:24px;
+background:linear-gradient(145deg,#24113d,#111119);
+border:1px solid #8d3cff;
+box-shadow:0 0 40px #8d3cff55;
+text-align:center;
+}
+
+.payment-icon{
+font-size:45px;
+margin-bottom:10px;
+}
+
+.payment-confirm-box h2{
+font-size:24px;
+margin-bottom:8px;
+}
+
+.payment-plan{
+font-size:20px;
+font-weight:bold;
+color:#c77dff;
+margin:12px 0;
+}
+
+.payment-note{
+color:#aaa;
+font-size:13px;
+line-height:1.5;
+margin-bottom:22px;
+}
+
+.payment-buttons{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.payment-pay{
+border:0;
+padding:13px;
+border-radius:12px;
+background:#8d3cff;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.payment-cancel{
+border:0;
+padding:13px;
+border-radius:12px;
+background:#292929;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+  /* POPULAR PLAN */
+
+.plan.popular{
+border:2px solid #8d3cff;
+box-shadow:0 0 25px #8d3cff44;
+position:relative;
+}
+
+.popular-badge{
+display:inline-block;
+background:#8d3cff;
+color:white;
+padding:5px 12px;
+border-radius:20px;
+font-size:11px;
+font-weight:bold;
+margin-bottom:10px;
+}
+  .best-value{
+border:2px solid #8d3cff;
+box-shadow:0 0 25px #8d3cff44;
+position:relative;
+  }
+  /* PREMIUM BENEFITS */
+
+.premium-benefits{
+margin:25px 0;
+padding:22px;
+border-radius:20px;
+background:#171722;
+border:1px solid #333;
+}
+
+.premium-benefits h2{
+text-align:center;
+margin-bottom:18px;
+}
+
+.benefit{
+display:flex;
+align-items:center;
+gap:12px;
+padding:12px 0;
+border-bottom:1px solid #292936;
+font-size:15px;
+}
+
+.benefit:last-child{
+border-bottom:0;
+}
+
+.benefit-icon{
+font-size:22px;
+}
+  /* PREMIUM SUCCESS */
+
+#premiumSuccess .premium-popup-box{
+border-color:#ffd700;
+box-shadow:0 0 45px #ffd70055;
+}
+
+#premiumSuccess h2{
+color:#ffd700;
+}
+
+#premiumSuccess .premium-join{
+width:100%;
+height:48px;
+border:0 !important;
+outline:none !important;
+border-radius:12px;
+background:#8d3cff !important;
+color:#fff !important;
+font-size:16px;
+font-weight:bold;
+display:block;
+box-sizing:border-box;
+appearance:none;
+-webkit-appearance:none;
+box-shadow:0 6px 18px #8d3cff55;
+cursor:pointer;
+}
 </style>
 </head>
+
 <body>
+
 <div class="app">
-<section id="homePage" class="page active">
-<header><div class="logo">Wall <span>Nest</span></div><div class="crown">👑</div></header>
-<div class="search">🔍 <input id="searchInput" placeholder="Search wallpapers..."></div>
-<div class="hero"><div><h1>Beautiful Wallpapers</h1><p>Discover your perfect wallpaper</p><div class="button" data-action="featured">Explore Now</div></div></div>
-<div class="section"><div class="section-title"><h2>Categories</h2><span data-page="allCategoriesPage">See All ›</span></div><div class="categories"><div class="category cars" data-page="carsPage">🚗 Cars</div><div class="category anime" data-page="animePage">🎌 Anime</div></div></div>
-<div class="section" id="featured"><div class="section-title"><h2>Featured Wallpapers</h2><span data-page="allWallpapersPage">See All ›</span></div><div class="wallpapers">
-<div class="wallpaper w1" data-wall="w1"><div class="badge free">FREE</div><div class="heart" data-fav="w1">♡</div></div>
-<div class="wallpaper w2" data-wall="w2"><div class="badge premium">PREMIUM</div><div class="heart" data-fav="w2">♡</div></div>
-<div class="wallpaper w3" data-wall="w3"><div class="badge premium">PREMIUM</div><div class="heart" data-fav="w3">♡</div></div>
-<div class="wallpaper w4" data-wall="w4"><div class="badge free">FREE</div><div class="heart" data-fav="w4">♡</div></div>
-</div></div>
-<div class="premium-box"><h2>👑 Wall Nest Premium</h2><p>Unlock exclusive wallpapers, HD quality and an ad-free experience.</p><div class="button" data-page="premiumPage">Explore Premium</div></div>
-</section>
 
-<section id="carsPage" class="page"><div class="page-header"><div class="back" data-page="homePage">‹</div><h1>🚗 Cars</h1></div><div class="section"><div class="section-title"><h2>Car Wallpapers</h2><span>4 Wallpapers</span></div><div class="wallpapers">
-<div class="wallpaper c1" data-wall="c1"><div class="badge free">FREE</div><div class="heart" data-fav="c1">♡</div></div>
-<div class="wallpaper c2" data-wall="c2"><div class="badge premium">PREMIUM</div><div class="heart" data-fav="c2">♡</div></div>
-<div class="wallpaper c3" data-wall="c3"><div class="badge free">FREE</div><div class="heart" data-fav="c3">♡</div></div>
-<div class="wallpaper c4" data-wall="c4"><div class="badge premium">PREMIUM</div><div class="heart" data-fav="c4">♡</div></div>
-</div></div></section>
+<!-- HOME -->
 
-<section id="animePage" class="page"><div class="page-header"><div class="back" data-page="homePage">‹</div><h1>🎌 Anime</h1></div><div class="section"><div class="section-title"><h2>Anime Wallpapers</h2><span>4 Wallpapers</span></div><div class="wallpapers">
-<div class="wallpaper a1" data-wall="a1"><div class="badge free">FREE</div><div class="heart" data-fav="a1">♡</div></div>
-<div class="wallpaper a2" data-wall="a2"><div class="badge premium">PREMIUM</div><div class="heart" data-fav="a2">♡</div></div>
-<div class="wallpaper a3" data-wall="a3"><div class="badge free">FREE</div><div class="heart" data-fav="a3">♡</div></div>
-<div class="wallpaper a4" data-wall="a4"><div class="badge premium">PREMIUM</div><div class="heart" data-fav="a4">♡</div></div>
-</div></div></section>
+<div id="homePage" class="page active">
 
-<section id="favoritesPage" class="page"><div class="page-header"><div class="back" data-page="homePage">‹</div><h1>❤️ Favorites</h1></div><div class="section"><div id="favoritesList" class="wallpapers"></div></div></section>
-<section id="allCategoriesPage" class="page"><div class="page-header"><div class="back" data-page="homePage">‹</div><h1>📂 Categories</h1></div><div class="section"><div class="categories"><div class="category cars" data-page="carsPage">🚗 Cars</div><div class="category anime" data-page="animePage">🎌 Anime</div></div></div></section>
-<section id="allWallpapersPage" class="page"><div class="page-header"><div class="back" data-page="homePage">‹</div><h1>🖼️ All Wallpapers</h1></div><div class="section"><div id="allList" class="wallpapers"></div></div></section>
-<section id="premiumPage" class="page"><div class="page-header"><div class="back" data-page="homePage">‹</div><h1>👑 Premium</h1></div><div class="premium-box"><h2>👑 Wall Nest Premium</h2><p>Unlock all premium wallpapers and HD quality.</p><div class="plans"><div class="plan"><h3>💎 1 Month</h3><h2>₹49</h2><button class="primary" data-plan="1 Month - ₹49">Choose Plan</button></div><div class="plan"><h3>🔥 6 Months</h3><h2>₹199</h2><button class="primary" data-plan="6 Months - ₹199">Choose Plan</button></div><div class="plan"><h3>👑 1 Year</h3><h2>₹299</h2><button class="primary" data-plan="1 Year - ₹299">Choose Plan</button></div></div></div></section>
+<header>
+<div class="logo">Wall <span>Nest</span></div>
+<div class="crown">👑</div>
+</header>
 
+<div class="search">
+🔍
+<input id="searchInput" placeholder="Search wallpapers...">
+</div>
+
+<div class="hero">
+<div>
+<h1>Beautiful Wallpapers</h1>
+<p>Discover your perfect wallpaper</p>
+<div class="button" onclick="scrollToFeatured()">Explore Now</div>
+</div>
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>Categories</h2>
+<span>See All ›</span>
+</div>
+
+<div class="categories">
+
+<div class="category cars" onclick="openCategory('cars')">
+🚗 Cars
+</div>
+
+<div class="category anime" onclick="openCategory('anime')">
+🎌 Anime
+</div>
+
+</div>
+</div>
+
+<div class="section" id="featured">
+
+<div class="section-title">
+<h2>Featured Wallpapers</h2>
+<span>See All ›</span>
+</div>
+
+<div class="wallpapers">
+
+<div class="wallpaper w1" onclick="openPreview(0)">
+<div class="badge free">FREE</div>
+<div class="heart" onclick="favorite(event,0)" id="heart0">♡</div>
+</div>
+
+<div class="wallpaper w2" onclick="openPreview(1)">
+<div class="badge premium">PREMIUM</div>
+<div class="heart" onclick="favorite(event,1)" id="heart1">♡</div>
+</div>
+
+<div class="wallpaper w3" onclick="openPreview(2)">
+<div class="badge premium">PREMIUM</div>
+<div class="heart" onclick="favorite(event,2)" id="heart2">♡</div>
+</div>
+
+<div class="wallpaper w4" onclick="openPreview(3)">
+<div class="badge free">FREE</div>
+<div class="heart" onclick="favorite(event,3)" id="heart3">♡</div>
+</div>
+
+</div>
+</div>
+
+<div class="premium-box">
+
+<h2>👑 Wall Nest Premium</h2>
+
+<p>
+Unlock exclusive wallpapers, HD quality
+and an ad-free experience.
+</p>
+
+<div class="button" onclick="premiumMessage()">
+Explore Premium
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CARS PAGE -->
+
+<div id="carsPage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>🚗 Cars</h1>
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>Car Wallpapers</h2>
+<span>4 Wallpapers</span>
+</div>
+
+<div class="wallpapers">
+
+<div class="wallpaper c1" onclick="openCategoryPreview('c1')">
+<div class="badge free">FREE</div>
+<div class="heart">♡</div>
+</div>
+
+<div class="wallpaper c2" onclick="openCategoryPreview('c2')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">♡</div>
+</div>
+
+<div class="wallpaper c3" onclick="openCategoryPreview('c3')">
+<div class="badge free">FREE</div>
+<div class="heart">♡</div>
+</div>
+
+<div class="wallpaper c4" onclick="openCategoryPreview('c4')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">♡</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- ANIME PAGE -->
+
+<div id="animePage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>🎌 Anime</h1>
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>Anime Wallpapers</h2>
+<span>4 Wallpapers</span>
+</div>
+
+<div class="wallpapers">
+
+<div class="wallpaper a1" onclick="openCategoryPreview('a1')">
+<div class="badge free">FREE</div>
+<div class="heart">♡</div>
+</div>
+
+<div class="wallpaper a2" onclick="openCategoryPreview('a2')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">♡</div>
+</div>
+
+<div class="wallpaper a3" onclick="openCategoryPreview('a3')">
+<div class="badge free">FREE</div>
+<div class="heart">♡</div>
+</div>
+
+<div class="wallpaper a4" onclick="openCategoryPreview('a4')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">♡</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- PREMIUM PAGE -->
+
+<div id="premiumPage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>👑 Premium</h1>
+</div>
+
+<div class="premium-box">
+
+<h2>👑 Wall Nest Premium</h2>
+
+<p>
+Unlock exclusive premium wallpapers,
+HD quality and an ad-free experience.
+</p>
+
+<div class="button" onclick="openPremiumPopup()">
+💎 Premium Membership
+</div>
+  <div class="premium-benefits">
+
+<h2>✨ Premium Benefits</h2>
+
+<div class="benefit">
+<div class="benefit-icon">🔓</div>
+<div>Unlock all premium wallpapers</div>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">🖼️</div>
+<div>HD & high-quality wallpapers</div>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">🚫</div>
+<div>Ad-free experience</div>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">⚡</div>
+<div>New premium wallpapers regularly</div>
+</div>
+
+  </div>
+<div class="plans">
+
+<div class="plan">
+<h3>💎 1 Month</h3>
+<h2>₹49</h2>
+<p>Premium wallpapers</p>
+<button onclick="selectPremiumPlan('1 Month - ₹49')">Choose Plan</button>
+</div>
+
+<div class="plan popular">
+
+<div class="popular-badge">
+🔥 MOST POPULAR
+</div>
+
+<h3>🔥 6 Months</h3>
+<h2>₹199</h2>
+<p>Premium wallpapers</p>
+
+<button onclick="selectPremiumPlan('6 Months - ₹199')">Choose Plan</button>
+
+</div>
+
+<div class="plan best-value">
+
+<div class="popular-badge">
+👑 BEST VALUE
+</div>
+
+<h3>👑 1 Year</h3>
+
+<h2>₹299</h2>
+
+<p>Premium wallpapers</p>
+
+<button onclick="selectPremiumPlan('1 Year - ₹299')">Choose Plan</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>🔒 Premium Wallpapers</h2>
+<span>Locked</span>
+</div>
+
+<div class="wallpapers">
+
+<div class="wallpaper w2" onclick="openCategoryPreview('w2')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">🔒</div>
+</div>
+
+<div class="wallpaper w3" onclick="openCategoryPreview('w3')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">🔒</div>
+</div>
+
+<div class="wallpaper c2" onclick="openCategoryPreview('c2')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">🔒</div>
+</div>
+
+<div class="wallpaper a2" onclick="openCategoryPreview('a2')">
+<div class="badge premium">PREMIUM</div>
+<div class="heart">🔒</div>
+</div>
+
+ 
+  </div>
+</div>
+</div>
+
+<!-- PREMIUM SUCCESS POPUP -->
+
+<div id="premiumSuccess" class="premium-popup">
+
+<div class="premium-popup-box">
+
+<div class="premium-popup-icon">👑</div>
+
+<h2>Premium Activated!</h2>
+
+<p>
+✨ Congratulations!<br>
+All Premium wallpapers are now unlocked.
+</p>
+
+<button class="premium-join" onclick="closePremiumSuccess()">
+Continue
+</button>
+
+</div>
+
+</div>
+<!-- BOTTOM NAV -->
+<!-- PREMIUM POPUP -->
+
+<div id="premiumPopup" class="premium-popup">
+
+<div class="premium-popup-box">
+
+<div class="premium-popup-icon">👑</div>
+
+<h2>Choose Your Plan</h2>
+
+<p>Select a Premium membership plan</p>
+
+<div class="premium-popup-buttons">
+
+<button class="premium-join" onclick="selectPremiumPlan('1 Month - ₹49')">
+💎 1 Month — ₹49
+</button>
+
+<button class="premium-join" onclick="selectPremiumPlan('6 Months - ₹199')">
+🔥 6 Months — ₹199
+</button>
+
+<button class="premium-join" onclick="selectPremiumPlan('1 Year - ₹299')">
+👑 1 Year — ₹299
+</button>
+
+<button class="premium-cancel" onclick="closePremiumPopup()">
+Close
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PAYMENT POPUP -->
+
+<div id="paymentPopup" class="premium-popup">
+
+<div class="payment-confirm-box">
+
+<div class="payment-icon">💳</div>
+
+<h2>Confirm Your Plan</h2>
+
+<div id="paymentPlan" class="payment-plan">
+1 Month - ₹49
+</div>
+
+<div class="payment-note">
+You are selecting Wall Nest Premium.<br>
+Unlock exclusive wallpapers and HD quality.
+</div>
+
+<div class="payment-buttons">
+
+<button class="payment-pay" onclick="continuePayment()">
+💳 Pay Securely
+</button>
+
+<button class="payment-cancel" onclick="closePaymentPopup()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FAVORITES PAGE -->
+
+<div id="favoritesPage" class="page">
+
+<div class="page-header">
+<div class="back" onclick="goHome()">‹</div>
+<h1>❤️ Favorites</h1>
+</div>
+
+<div class="section">
+
+<div class="section-title">
+<h2>❤️ Your Favorites</h2>
+<span>Saved</span>
+</div>
+
+<div id="favoritesList" class="wallpapers">
+
+<p style="color:#aaa;text-align:center;width:100%;">
+No favorite wallpapers yet ❤️
+</p>
+
+</div>
+
+</div>
+
+</div>
 <div class="bottom-nav">
-<div class="nav-item active" data-nav="homePage"><div class="nav-icon">⌂</div>Home</div>
-<div class="nav-item" data-nav="carsPage"><div class="nav-icon">🚗</div>Cars</div>
-<div class="nav-item" data-nav="animePage"><div class="nav-icon">🎌</div>Anime</div>
-<div class="nav-item" data-nav="favoritesPage"><div class="nav-icon">❤️</div>Favorites</div>
-<div class="nav-item" data-nav="premiumPage"><div class="nav-icon">👑</div>Premium</div>
+
+<div class="nav-item active" onclick="goHome()">
+<div class="nav-icon">⌂</div>
+Home
 </div>
 
-<div id="preview" class="preview"><div id="previewImage" class="preview-image"></div><div class="preview-controls"><button id="downloadBtn" class="control download">⬇️ Download</button><button id="previewFav" class="control">❤️ Favorite</button><button id="closePreview" class="control close">✕ Close</button></div></div>
-<div id="paymentPopup" class="popup"><div class="popup-box"><h2>Confirm Your Plan</h2><p id="paymentPlan"></p><div class="popup-buttons"><button id="payBtn" class="primary">💳 Activate Demo Premium</button><button id="cancelPay" class="close">Cancel</button></div></div></div>
-<div id="successPopup" class="popup"><div class="popup-box"><h2>👑 Premium Activated!</h2><p>All Premium wallpapers are now unlocked.</p><button id="successClose" class="primary">Continue</button></div></div>
-<div class="creator-credit">Created by <strong>Muttaqi Abbas</strong> ❤️</div>
+<div class="nav-item" onclick="openCategory('cars')">
+<div class="nav-icon">🚗</div>
+Cars
 </div>
+
+<div class="nav-item" onclick="openCategory('anime')">
+<div class="nav-icon">🎌</div>
+Anime
+</div>
+
+<div class="nav-item" onclick="openFavorites()">
+<div class="nav-icon">❤️</div>
+Favorites
+</div>
+
+<div class="nav-item" onclick="premiumMessage()">
+<div class="nav-icon">👑</div>
+Premium
+</div>
+
+
+
+</div>
+
+<!-- PREVIEW -->
+
+<div id="preview" class="preview">
+
+<div id="previewImage" class="preview-image"></div>
+
+<div class="preview-controls">
+
+<button class="control download" onclick="downloadWallpaper()">
+⬇️ Download
+</button>
+
+<button class="control close" onclick="closePreview()">
+✕ Close
+</button>
+
+</div>
+
+</div>
+
 
 <script>
-(function(){
-"use strict";
-var WALL={
+
+const wallpapers = {
+
 w1:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=90",
+
 w2:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=90",
+
 w3:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=90",
+
 w4:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=90",
+
 c1:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=90",
+
 c2:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=90",
+
 c3:"https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=90",
+
 c4:"https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1200&q=90",
+
 a1:"https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1200&q=90",
+
 a2:"https://images.unsplash.com/photo-1613376023733-0a73315d9b06?auto=format&fit=crop&w=1200&q=90",
+
 a3:"https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=90",
+
 a4:"https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=1200&q=90"
+
 };
-var PREMIUM=["w2","w3","c2","c4","a2","a4"], current="", premium=localStorage.getItem("wallnestPremium")==="true";
-var fav=[];
-try{fav=JSON.parse(localStorage.getItem("wallnestFavoritesV2")||"[]");if(!Array.isArray(fav))fav=[];}catch(e){fav=[];}
 
-function show(id){
- var target=document.getElementById(id);
- if(!target)return;
- document.querySelectorAll(".page").forEach(function(p){p.classList.remove("active");});
- target.classList.add("active");
- document.querySelectorAll(".nav-item").forEach(function(n){n.classList.toggle("active",n.getAttribute("data-nav")===id);});
- window.scrollTo(0,0);
- if(id==="favoritesPage")renderFavorites();
- if(id==="allWallpapersPage")renderAll();
-}
-function toggleFav(key){
- var i=fav.indexOf(key); if(i>=0)fav.splice(i,1); else fav.push(key);
- localStorage.setItem("wallnestFavoritesV2",JSON.stringify(fav)); syncHearts(); renderFavorites();
-}
-function syncHearts(){
- document.querySelectorAll("[data-fav]").forEach(function(h){h.textContent=fav.indexOf(h.getAttribute("data-fav"))>=0?"♥":"♡";});
-}
-function openWall(key){
- if(!WALL[key])return;
- if(PREMIUM.indexOf(key)>=0&&!premium){show("premiumPage");return;}
- current=key;document.getElementById("previewImage").style.backgroundImage="url('"+WALL[key]+"')";document.getElementById("preview").classList.add("show");
-}
-function card(key){
- var d=document.createElement("div");d.className="wallpaper "+key;d.setAttribute("data-wall",key);
- var b=document.createElement("div");b.className="badge "+(PREMIUM.indexOf(key)>=0?"premium":"free");b.textContent=PREMIUM.indexOf(key)>=0?"PREMIUM":"FREE";
- var h=document.createElement("div");h.className="heart";h.setAttribute("data-fav",key);h.textContent=fav.indexOf(key)>=0?"♥":"♡";
- d.appendChild(b);d.appendChild(h);return d;
-}
-function renderFavorites(){
- var list=document.getElementById("favoritesList"); if(!list)return; list.innerHTML="";
- if(!fav.length){list.innerHTML='<p class="empty">No favorite wallpapers yet ❤️</p>';return;}
- fav.forEach(function(k){if(WALL[k])list.appendChild(card(k));});
-}
-function renderAll(){var list=document.getElementById("allList");if(!list)return;list.innerHTML="";Object.keys(WALL).forEach(function(k){list.appendChild(card(k));});}
-function updatePremium(){document.querySelectorAll(".badge.premium").forEach(function(b){b.textContent=premium?"PREMIUM ✓":"PREMIUM";});}
+let currentWallpaper="";
+let favorites=[];
+const premiumWallpapers = ["w2","w3","c2","c4","a2","a4"];
+let isPremium = localStorage.getItem("wallnestPremium") === "true";
+function updatePremiumUI(){
 
-document.addEventListener("click",function(e){
- var nav=e.target.closest("[data-nav]"); if(nav){show(nav.getAttribute("data-nav"));return;}
- var page=e.target.closest("[data-page]"); if(page){show(page.getAttribute("data-page"));return;}
- var plan=e.target.closest("[data-plan]"); if(plan){document.getElementById("paymentPlan").textContent=plan.getAttribute("data-plan");document.getElementById("paymentPopup").classList.add("show");return;}
- var heart=e.target.closest("[data-fav]"); if(heart){e.stopPropagation();toggleFav(heart.getAttribute("data-fav"));return;}
- var wall=e.target.closest("[data-wall]"); if(wall){openWall(wall.getAttribute("data-wall"));return;}
- var act=e.target.closest("[data-action='featured']"); if(act){document.getElementById("featured").scrollIntoView({behavior:"smooth"});}
+const premiumCards = document.querySelectorAll("#premiumPage .wallpaper");
+
+premiumCards.forEach(card => {
+
+const badge = card.querySelector(".badge");
+const heart = card.querySelector(".heart");
+
+if(isPremium){
+
+if(badge){
+badge.innerHTML = "PREMIUM ✓";
+}
+
+if(heart){
+heart.innerHTML = "🔓";
+}
+
+}else{
+
+if(badge){
+badge.innerHTML = "PREMIUM";
+}
+
+if(heart){
+heart.innerHTML = "🔒";
+}
+
+}
+
 });
 
-document.getElementById("closePreview").onclick=function(){document.getElementById("preview").classList.remove("show");};
-document.getElementById("previewFav").onclick=function(){if(current)toggleFav(current);};
-document.getElementById("downloadBtn").onclick=function(){if(current&&WALL[current])window.open(WALL[current],"_blank");};
-document.getElementById("cancelPay").onclick=function(){document.getElementById("paymentPopup").classList.remove("show");};
-document.getElementById("payBtn").onclick=function(){document.getElementById("paymentPopup").classList.remove("show");premium=true;localStorage.setItem("wallnestPremium","true");updatePremium();document.getElementById("successPopup").classList.add("show");};
-document.getElementById("successClose").onclick=function(){document.getElementById("successPopup").classList.remove("show");};
+}
+/* CATEGORY */
 
-var search=document.getElementById("searchInput");
-search.addEventListener("input",function(){
- var q=this.value.toLowerCase().trim();
- if(q.indexOf("anime")>=0||q.indexOf("manga")>=0){show("animePage");}
- else if(q.indexOf("car")>=0||q.indexOf("vehicle")>=0){show("carsPage");}
- else if(q.indexOf("premium")>=0){show("premiumPage");}
- else if(!q){show("homePage");}
-});
+function openCategory(category){
 
-syncHearts();updatePremium();renderFavorites();renderAll();show("homePage");
-})();
-</script>
-</body>
-</html>
+document.getElementById("homePage").classList.remove("active");
+document.getElementById("carsPage").classList.remove("active");
+document.getElementById("animePage").classList.remove("active");
+document.getElementById("premiumPage").classList.remove("active");
+document.getElementById("favoritesPage").classList.remove("active");
+
+if(category==="cars"){
+document.getElementById("carsPage").classList.add("active");
+}
+
+if(category==="anime"){
+document.getElementBy
