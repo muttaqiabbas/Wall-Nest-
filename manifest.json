@@ -1,0 +1,10 @@
+{
+  "name": "Wall Nest",
+  "short_name": "Wall Nest",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#08080d",
+  "theme_color": "#8d3cff",
+  "description": "Beautiful free wallpapers for your phone.",
+  "orientation": "portrait"
+}
