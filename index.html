@@ -1862,5 +1862,12 @@ oldMessage.remove();
 <div class="creator-credit">
 Created by <strong>Muttaqi Abbas</strong> ❤️
 </div>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js");
+  });
+}
+</script>
 </body>
 </html>
